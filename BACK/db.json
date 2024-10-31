@@ -1,0 +1,478 @@
+{
+  "pagamentos": [
+    {
+      "id": "1",
+      "cliente_id": 1,
+      "valor_total": "350",
+      "data_pagamento": "2023-10-10",
+      "desconto": 5,
+      "forma_pagamento": "Cartão de Crédito",
+      "parcela": 0,
+      "vencimento": "2023-10-25",
+      "status": "1"
+    },
+    {
+      "id": "2",
+      "cliente_id": 2,
+      "valor_total": "480",
+      "data_pagamento": "2023-10-12",
+      "desconto": 15,
+      "forma_pagamento": "Boleto Bancário",
+      "parcela": 0,
+      "vencimento": "2023-10-27",
+      "status": "0"
+    },
+    {
+      "id": "3",
+      "cliente_id": 3,
+      "valor_total": "250",
+      "data_pagamento": "2023-10-14",
+      "desconto": 10,
+      "forma_pagamento": "Pix",
+      "parcela": 0,
+      "vencimento": "2023-10-30",
+      "status": "1"
+    },
+    {
+      "id": "4",
+      "cliente_id": 4,
+      "valor_total": "530",
+      "data_pagamento": "2023-10-16",
+      "desconto": 20,
+      "forma_pagamento": "Cartão de Débito",
+      "parcela": 1,
+      "vencimento": "2023-10-28",
+      "status": "1"
+    },
+    {
+      "id": "6",
+      "cliente_id": 6,
+      "valor_total": "410",
+      "data_pagamento": "2023-10-19",
+      "desconto": 10,
+      "forma_pagamento": "Boleto Bancário",
+      "parcela": 0,
+      "vencimento": "2023-11-05",
+      "status": "0"
+    },
+    {
+      "id": "7",
+      "cliente_id": 7,
+      "valor_total": "200",
+      "data_pagamento": "2023-10-20",
+      "desconto": 5,
+      "forma_pagamento": "Pix",
+      "parcela": 0,
+      "vencimento": "2023-11-07",
+      "status": "1"
+    },
+    {
+      "id": "8",
+      "cliente_id": 8,
+      "valor_total": "550",
+      "data_pagamento": "2023-10-21",
+      "desconto": 15,
+      "forma_pagamento": "Boleto Bancário",
+      "parcela": 0,
+      "vencimento": "2023-11-09",
+      "status": "0"
+    },
+    {
+      "id": "9",
+      "cliente_id": 9,
+      "valor_total": "670",
+      "data_pagamento": "2023-10-22",
+      "desconto": 20,
+      "forma_pagamento": "Cartão de Débito",
+      "parcela": 0,
+      "vencimento": "2023-11-11",
+      "status": "1"
+    },
+    {
+      "id": "10",
+      "cliente_id": 10,
+      "valor_total": "190",
+      "data_pagamento": "2023-10-23",
+      "desconto": 5,
+      "forma_pagamento": "Pix",
+      "parcela": 0,
+      "vencimento": "2023-11-12",
+      "status": "1"
+    },
+    {
+      "id": "11",
+      "cliente_id": 11,
+      "valor_total": "720",
+      "data_pagamento": "2023-10-24",
+      "desconto": 25,
+      "forma_pagamento": "Cartão de Crédito",
+      "parcela": 0,
+      "vencimento": "2023-11-15",
+      "status": "1"
+    },
+    {
+      "id": "12",
+      "cliente_id": 12,
+      "valor_total": "810",
+      "data_pagamento": "2023-10-25",
+      "desconto": 30,
+      "forma_pagamento": "Boleto Bancário",
+      "parcela": 0,
+      "vencimento": "2023-11-17",
+      "status": "0"
+    },
+    {
+      "id": "13",
+      "cliente_id": 13,
+      "valor_total": "900",
+      "data_pagamento": "2023-10-26",
+      "desconto": 20,
+      "forma_pagamento": "Cartão de Débito",
+      "parcela": 0,
+      "vencimento": "2023-11-20",
+      "status": "1"
+    },
+    {
+      "id": "14",
+      "cliente_id": 14,
+      "valor_total": "240",
+      "data_pagamento": "2023-10-27",
+      "desconto": 5,
+      "forma_pagamento": "Pix",
+      "parcela": 0,
+      "vencimento": "2023-11-22",
+      "status": "1"
+    },
+    {
+      "id": "15",
+      "cliente_id": 15,
+      "valor_total": "360",
+      "data_pagamento": "2023-10-28",
+      "desconto": 10,
+      "forma_pagamento": "Boleto Bancário",
+      "parcela": 0,
+      "vencimento": "2023-11-25",
+      "status": "0"
+    },
+    {
+      "id": "16",
+      "cliente_id": 16,
+      "valor_total": "430",
+      "data_pagamento": "2023-10-29",
+      "desconto": 15,
+      "forma_pagamento": "Cartão de Débito",
+      "parcela": 0,
+      "vencimento": "2023-11-27",
+      "status": "1"
+    },
+    {
+      "id": "17",
+      "cliente_id": 17,
+      "valor_total": "510",
+      "data_pagamento": "2023-10-30",
+      "desconto": 20,
+      "forma_pagamento": "Pix",
+      "parcela": 0,
+      "vencimento": "2023-11-30",
+      "status": "1"
+    },
+    {
+      "id": "18",
+      "cliente_id": 18,
+      "valor_total": "270",
+      "data_pagamento": "2023-11-01",
+      "desconto": 5,
+      "forma_pagamento": "Boleto Bancário",
+      "parcela": 0,
+      "vencimento": "2023-12-05",
+      "status": "0"
+    },
+    {
+      "id": "19",
+      "cliente_id": 19,
+      "valor_total": "600",
+      "data_pagamento": "2023-11-02",
+      "desconto": 15,
+      "forma_pagamento": "Cartão de Débito",
+      "parcela": 0,
+      "vencimento": "2023-12-07",
+      "status": "1"
+    },
+    {
+      "id": "20",
+      "cliente_id": 20,
+      "valor_total": "330",
+      "data_pagamento": "2023-11-03",
+      "desconto": 10,
+      "forma_pagamento": "Pix",
+      "parcela": 0,
+      "vencimento": "2023-12-09",
+      "status": "1"
+    }
+  ],
+  "compras": [
+    {
+      "id": "1",
+      "fornecedor_id": 1,
+      "data_compra": "2023-10-15",
+      "valor_total": "1560",
+      "desconto": "55",
+      "forma_pagamento": "Cartão de Débito",
+      "endereco_entrega": "Rua A, 123, Pinhalzinho, SC",
+      "produtos": [
+        {
+          "produto_id": 101,
+          "quantidade": 10,
+          "subtotal": 1000,
+          "preco_unitario": 100
+        },
+        {
+          "produto_id": 102,
+          "quantidade": 5,
+          "subtotal": 500,
+          "preco_unitario": 100
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "fornecedor_id": 2,
+      "data_compra": "2023-10-05",
+      "valor_total": 2500,
+      "desconto": 100,
+      "forma_pagamento": "Boleto Bancário",
+      "endereco_entrega": "Rua B, 456, Chapecó, SC",
+      "produtos": [
+        {
+          "produto_id": 103,
+          "quantidade": 8,
+          "subtotal": 1600,
+          "preco_unitario": 200
+        },
+        {
+          "produto_id": 104,
+          "quantidade": 3,
+          "subtotal": 900,
+          "preco_unitario": 300
+        }
+      ]
+    }
+  ],
+  "clientes": [
+    {
+      "id": "1",
+      "nome": "João da Sander",
+      "email": "joao.silva@example.com",
+      "telefone": "(49) 99988-1234",
+      "endereco": "Rua das Flores, 123, Pinhalzinho, SC",
+      "cpf": "123.456.789-00",
+      "status": "Ativo"
+    },
+    {
+      "id": "2",
+      "nome": "Maria Oliveira",
+      "email": "maria.oliveira@example.com",
+      "telefone": "(49) 99888-5678",
+      "endereco": "Avenida Brasil, 456, Chapecó, SC",
+      "cpf": "987.654.321-11",
+      "status": "Inativo"
+    },
+    {
+      "id": "3",
+      "nome": "Pedro Santos",
+      "email": "pedro.santos@example.com",
+      "telefone": "(49) 99777-1111",
+      "endereco": "Rua São José, 789, Saudades, SC",
+      "cpf": "123.321.123-22",
+      "status": "Ativo"
+    },
+    {
+      "id": "4",
+      "nome": "Ana Lima",
+      "email": "ana.lima@example.com",
+      "telefone": "(49) 99666-2222",
+      "endereco": "Rua Bela Vista, 101, Maravilha, SC",
+      "cpf": "222.333.444-55",
+      "status": "Ativo"
+    },
+    {
+      "id": "6",
+      "nome": "Lucas Ferreira",
+      "email": "lucas.ferreira@example.com",
+      "telefone": "(49) 99444-4444",
+      "endereco": "Rua das Palmeiras, 303, Nova Erechim, SC",
+      "cpf": "444.555.666-77",
+      "status": "Ativo"
+    },
+    {
+      "id": "7",
+      "nome": "Clara Costa",
+      "email": "clara.costa@example.com",
+      "telefone": "(49) 99333-5555",
+      "endereco": "Rua da Glória, 404, Pinhalzinho, SC",
+      "cpf": "333.222.111-88",
+      "status": "Ativo"
+    },
+    {
+      "id": "8",
+      "nome": "Felipe Moreira",
+      "email": "felipe.moreira@example.com",
+      "telefone": "(49) 99222-6666",
+      "endereco": "Avenida Paraná, 505, Chapecó, SC",
+      "cpf": "777.888.999-00",
+      "status": "Inativo"
+    },
+    {
+      "id": "9",
+      "nome": "Isabela Rocha",
+      "email": "isabela.rocha@example.com",
+      "telefone": "(49) 99111-7777",
+      "endereco": "Rua das Águas, 606, Saudades, SC",
+      "cpf": "666.777.888-99",
+      "status": "Ativo"
+    },
+    {
+      "id": "10",
+      "nome": "Renato Barros",
+      "email": "renato.barros@example.com",
+      "telefone": "(49) 99000-8888",
+      "endereco": "Rua das Oliveiras, 707, Maravilha, SC",
+      "cpf": "555.666.777-88",
+      "status": "Ativo"
+    }
+  ],
+  "vendas": [
+    {
+      "id": "1",
+      "cliente_id": 1,
+      "data_venda": "2023-10-17",
+      "valor_total": "550",
+      "desconto": 10,
+      "forma_pagamento": "Cartão de Crédito",
+      "endereco_entrega": "Rua das Flores, 123, Pinhalzinho, SC",
+      "produtos": [
+        {
+          "produto_id": 1,
+          "nome": "Camiseta",
+          "quantidade": 2,
+          "preco_unitario": 150,
+          "subtotal": 300,
+          "desconto": 0
+        },
+        {
+          "produto_id": 2,
+          "nome": "Calça Jeans",
+          "quantidade": 1,
+          "preco_unitario": 200,
+          "subtotal": 200,
+          "desconto": 10
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "cliente_id": 2,
+      "data_venda": "2023-10-18",
+      "valor_total": 300,
+      "desconto": 5,
+      "forma_pagamento": "Boleto Bancário",
+      "endereco_entrega": "Avenida Brasil, 456, Chapecó, SC",
+      "produtos": [
+        {
+          "produto_id": 3,
+          "nome": "Antiguidade Rara",
+          "quantidade": 1,
+          "preco_unitario": 300,
+          "subtotal": 300,
+          "desconto": 5
+        }
+      ]
+    }
+  ],
+  "fornecedores": [
+    {
+      "id": "1",
+      "nome": "Fornecedor A",
+      "endereco": "Rua 1, 123, São Paulo, SP",
+      "telefone": "(11) 99999-9999",
+      "email": "fornecedorA@example.com",
+      "cnpj": "12.345.678/0001-01"
+    },
+    {
+      "id": "2",
+      "nome": "Fornecedor B",
+      "endereco": "Avenida 2, 456, Rio de Janeiro, RJ",
+      "telefone": "(21) 88888-8888",
+      "email": "fornecedorB@example.com",
+      "cnpj": "98.765.432/0001-22"
+    },
+    {
+      "id": "3",
+      "nome": "Fornecedor C",
+      "endereco": "Rua 3, 789, Porto Alegre, RS",
+      "telefone": "(51) 77777-7777",
+      "email": "fornecedorC@example.com",
+      "cnpj": "11.111.111/0001-33"
+    },
+    {
+      "id": "4",
+      "nome": "Fornecedor D",
+      "endereco": "Avenida 4, 101, Belo Horizonte, MG",
+      "telefone": "(31) 66666-6666",
+      "email": "fornecedorD@example.com",
+      "cnpj": "22.222.222/0001-44"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Camiseta",
+      "descricao": "Camiseta de algodão 100% com diversas cores.",
+      "preco": 29.99,
+      "quantidade_disponivel": 100,
+      "tamanho": "M",
+      "cor": "Preto",
+      "tipo": "Roupas"
+    },
+    {
+      "id": "2",
+      "nome": "Calça Jeans",
+      "descricao": "Calça jeans masculina com bolsos frontais e traseiros.",
+      "preco": 79.99,
+      "quantidade_disponivel": 50,
+      "tamanho": "42",
+      "cor": "Azul",
+      "tipo": "Roupas"
+    },
+    {
+      "id": "3",
+      "nome": "Antiguidade Rara",
+      "descricao": "Peça rara de coleção, excelente para colecionadores.",
+      "preco": 300,
+      "quantidade_disponivel": 10,
+      "tipo": "Antiguidades"
+    },
+    {
+      "id": "4",
+      "nome": "Disco de Vinil",
+      "descricao": "Disco de vinil clássico, perfeito para apreciadores de música.",
+      "preco": 150,
+      "quantidade_disponivel": 25,
+      "tipo": "Discos"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "ale",
+      "password": "ale123",
+      "name": "Alexandre"
+    },
+    {
+      "id": "2",
+      "username": "adri",
+      "password": "adri123",
+      "name": "Adriane"
+    }
+  ]
+}

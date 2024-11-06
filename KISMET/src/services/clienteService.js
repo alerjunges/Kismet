@@ -13,27 +13,26 @@ export default {
   },
 
   // Função para adicionar um novo cliente com o próximo ID
-  async addCliente(novoCliente) {
-    try {
-      // buscar todos os clientes existentes
-      const clientes = await this.getClientesData();
-      console.log(clientes);
+async addCliente(novoCliente) {
+  try {
+    // buscar todos os clientes existentes
+    const clientes = await this.getClientesData();
+    console.log(clientes);
 
-      const maiorId = clientes.reduce(
-        (max, cliente) => (+cliente.id > +max ? +cliente.id : +max),
-        0
-      );
+    const maiorId = clientes.reduce(
+      (max, cliente) => (Number(cliente.id) > max ? Number(cliente.id) : max),
+      0
+    );
 
-      novoCliente.id = maiorId + 1;
-
-      const response = await api.post("/clientes", novoCliente);
-      console.log("Cliente adicionado com sucesso:", response.data);
-      return response.data;
-    } catch (error) {
-      console.error("Erro ao adicionar cliente:", error);
-      throw error;
-    }
-  },
+    novoCliente.id = maiorId + 1; // Garante que o ID será numérico
+    const response = await api.post("/clientes", novoCliente);
+    console.log("Cliente adicionado com sucesso:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao adicionar cliente:", error);
+    throw error;
+  }
+},
 
   // Função para atualizar um cliente
   async updateCliente(clienteId, clienteAtualizado) {

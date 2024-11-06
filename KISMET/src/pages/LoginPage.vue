@@ -1,12 +1,10 @@
 <template>
   <div class="login-container">
     <q-card class="login-card">
-      <!-- Logo -->
       <div class="logo-container">
         <img src="src/assets/Logo-kismet-login.png" alt="Logo Kismet" class="login-logo" />
       </div>
 
-      <!-- Formulário de login -->
       <q-form @submit="login">
         <q-input
           filled
@@ -22,11 +20,10 @@
           label="Senha"
           type="password"
           outlined
-          class="input-field"
           required
+          class="input-field"
         />
-
-        <!-- Botão Entrar -->
+        
         <q-btn type="submit" label="ENTRAR" class="submit-btn" />
       </q-form>
     </q-card>
@@ -36,32 +33,26 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useUserStore } from 'src/stores/userStore'; // Importa a store do usuário
-import { login as loginService } from 'src/services/authService'; // Importa o serviço de login
+import { useUserStore } from 'src/stores/userStore';
+import { login as loginService } from 'src/services/authService';
 
 const username = ref('');
 const password = ref('');
 const router = useRouter();
-const userStore = useUserStore(); // Acessa a store do usuário
+const userStore = useUserStore();
 
-// Função de login
 async function login() {
   try {
-    const user = await loginService(username.value, password.value); // Faz a autenticação com o serviço
-    userStore.login(user.name); // Armazena o nome do usuário logado na store
-    router.push('/'); // Redireciona para a página principal após o login
+    const user = await loginService(username.value, password.value);
+    userStore.login(user.name); 
+    router.push('/'); 
   } catch (error) {
-    alert('Usuário ou senha inválidos'); 
+    alert('Usuário ou senha inválidos');
   }
-}
-
-function forgotPassword() {
-  console.log('Esqueceu a senha clicado');
 }
 </script>
 
 <style scoped>
-
 .login-container {
   display: flex;
   justify-content: center;
@@ -70,16 +61,14 @@ function forgotPassword() {
   background-color: #f9f9f9;
 }
 
-
 .login-card {
   max-width: 500px;
   width: 100%;
-  padding: 40px 30px; 
+  padding: 40px 30px;
   border-radius: 16px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border: 2px solid #04442C; /* Cor da borda */
+  border: 2px solid #04442C;
 }
-
 
 .logo-container {
   text-align: center;
@@ -87,14 +76,12 @@ function forgotPassword() {
 }
 
 .login-logo {
-  width: 250px; 
+  width: 250px;
 }
-
 
 .input-field {
   margin-bottom: 20px;
 }
-
 
 .submit-btn {
   width: 100%;
@@ -104,5 +91,5 @@ function forgotPassword() {
   font-weight: bold;
   padding: 12px;
 }
-
 </style>
+  

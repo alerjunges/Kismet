@@ -70,7 +70,6 @@
             </div>
           </div>
 
-          <!-- Linha para botões Voltar e Salvar -->
           <div class="button-row">
             <q-btn
               type="submit"
@@ -89,9 +88,10 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import clienteService from "src/services/clienteService";
+import { useClienteStore } from "src/stores/clienteStore"; // Importando a store
 
 const router = useRouter();
+const clienteStore = useClienteStore(); // Instância da store
 
 const nome = ref("");
 const email = ref("");
@@ -114,9 +114,8 @@ async function submitForm() {
       cpf: cpf.value,
       status: status.value,
     };
-    await clienteService.addCliente(novoCliente);
-
-    console.log("Cliente Adicionado com sucesso");
+    
+    await clienteStore.addCliente(novoCliente); // Usando a store para adicionar o cliente
 
     nome.value = "";
     email.value = "";

@@ -110,9 +110,10 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import compraService from 'src/services/compraService';
+import { useCompraStore } from 'src/stores/compraStore';
 
 const router = useRouter();
+const compraStore = useCompraStore();
 const search = ref('');
 const editingCompra = ref(null);
 
@@ -127,10 +128,12 @@ const columns = [
   { name: 'endereco_entrega', label: 'Endereço de Entrega', align: 'left', field: 'endereco_entrega' }
 ];
 
-const loading = ref(true);
-const error = ref(null);
-const compras = ref([]);
+// Computed properties para reatividade
+const loading = computed(() => compraStore.loading);
+const error = computed(() => compraStore.error);
+const compras = computed(() => compraStore.compras);
 
+// Funções para formatar valores monetários e datas
 function formatarMoeda(valor) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
 }
@@ -140,25 +143,19 @@ function formatarData(data) {
   return dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
+// Filtrar compras com base na busca
 const comprasFiltradas = computed(() =>
   compras.value ? compras.value.filter(compra =>
     compra.fornecedor_id.toString().includes(search.value)
   ) : []
 );
 
+// Buscar dados de compras ao montar o componente
 onMounted(async () => {
-  await fetchComprasData();
-  loading.value = false;
+  await compraStore.fetchComprasData();
 });
 
-async function fetchComprasData() {
-  try {
-    compras.value = await compraService.getComprasData();
-  } catch (err) {
-    error.value = 'Erro ao carregar compras';
-  }
-}
-
+// Alternar o modo de edição
 function toggleEdit(compra) {
   if (editingCompra.value && editingCompra.value.id === compra.id) {
     editingCompra.value = null;
@@ -167,28 +164,30 @@ function toggleEdit(compra) {
   }
 }
 
+// Função para salvar a edição
 async function salvarEdicao(compraId) {
   try {
-    await compraService.updateCompra(compraId, editingCompra.value);
+    await compraStore.updateCompra(compraId, editingCompra.value);
     editingCompra.value = null;
-    await fetchComprasData();
   } catch (err) {
     console.error('Erro ao atualizar compra:', err);
   }
 }
 
+// Função para adicionar compra
 function adicionarCompra() {
   router.push('/adicionar-compra');
 }
 
+// Função para ver o relatório detalhado
 function verRelatorioDetalhado() {
   router.push('/relatorio-compra');
 }
 
+// Função para deletar compra
 async function deletarCompra(compraId) {
   try {
-    await compraService.deleteCompra(compraId);
-    await fetchComprasData();
+    await compraStore.deleteCompra(compraId);
   } catch (err) {
     console.error("Erro ao deletar compra:", err);
   }

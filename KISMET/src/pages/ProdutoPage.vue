@@ -120,13 +120,13 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import produtoService from 'src/services/produtoService';
+import { useProdutoStore } from 'src/stores/produtoStore';
 
 const router = useRouter();
 const search = ref('');
 const editingProduto = ref(null);
+const produtoStore = useProdutoStore();
 
-// Definindo colunas da tabela
 const columns = [
   { name: 'acao', label: 'Ações', align: 'center' },
   { name: 'id', label: 'ID Produto', align: 'left', field: 'id' },
@@ -139,38 +139,20 @@ const columns = [
   { name: 'tipo', label: 'Tipo', align: 'left', field: 'tipo' }
 ];
 
-// Buscar dados de produtos ao montar o componente
-const loading = ref(true);
-const error = ref(null);
-const produtos = ref([]);
-
 onMounted(async () => {
-  await fetchProdutosData();
-  loading.value = false;
+  await produtoStore.fetchProdutosData();
 });
 
-// Função para buscar dados de produtos
-async function fetchProdutosData() {
-  try {
-    produtos.value = await produtoService.getProdutosData();
-  } catch (err) {
-    error.value = 'Erro ao carregar produtos';
-  }
-}
-
-// Função para formatar valores monetários
-function formatarMoeda(valor) {
-  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
-}
-
-// Filtrar produtos com base na busca
 const produtosFiltrados = computed(() =>
-  produtos.value ? produtos.value.filter(produto =>
+  produtoStore.produtos ? produtoStore.produtos.filter(produto =>
     produto.nome.toLowerCase().includes(search.value.toLowerCase())
   ) : []
 );
 
-// Função para alternar o modo de edição
+function formatarMoeda(valor) {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
+}
+
 function toggleEdit(produto) {
   if (editingProduto.value && editingProduto.value.id === produto.id) {
     editingProduto.value = null;
@@ -179,27 +161,22 @@ function toggleEdit(produto) {
   }
 }
 
-// Função para salvar a edição
 async function salvarEdicao(produtoId) {
   try {
-    await produtoService.updateProduto(produtoId, editingProduto.value);
-    editingProduto.value = null; 
-    fetchProdutosData();
+    await produtoStore.updateProduto(produtoId, editingProduto.value);
+    editingProduto.value = null;
   } catch (err) {
     console.error('Erro ao atualizar produto:', err);
   }
 }
 
-// Função para adicionar produto
 function adicionarProduto() {
   router.push('/adicionar-produto');
 }
 
-// Função para deletar produto
 async function deletarProduto(produtoId) {
   try {
-    await produtoService.deleteProduto(produtoId);
-    fetchProdutosData();
+    await produtoStore.deleteProduto(produtoId);
   } catch (err) {
     console.error("Erro ao deletar produto:", err);
   }

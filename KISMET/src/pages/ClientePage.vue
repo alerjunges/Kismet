@@ -1,14 +1,12 @@
 <template>
   <div class="q-pa-md">
     <q-layout view="hHh Lpr lFf" container style="height: 100vh">
-      <!-- Conteúdo principal -->
       <q-page-container>
         <q-page class="q-px-lg q-py-md">
           <q-spinner v-if="loading" size="30px" color="primary" />
           <div v-if="error" class="text-negative">{{ error }}</div>
 
           <div class="row q-mb-md">
-            <!-- Botão de Adicionar Cliente -->
             <q-btn
               class="custom-button"
               color="green-10"
@@ -16,8 +14,6 @@
               label="Adicionar Cliente"
               @click="adicionarCliente"
             />
-
-            <!-- Campo de Busca -->
             <q-input
               outlined
               rounded
@@ -28,14 +24,11 @@
               prepend-icon="search"
               class="custom-input"
             />
-
-            <!-- Contador de Clientes -->
             <div class="result-count">
               {{ clientesFiltrados.length }} cliente(s) encontrado(s)
             </div>
           </div>
 
-          <!-- Tabela de Clientes -->
           <q-table
             v-if="clientesFiltrados && clientesFiltrados.length > 0 && !loading && !error"
             :rows="clientesFiltrados"
@@ -54,58 +47,49 @@
 
             <template v-slot:body="props">
               <q-tr :props="props" class="body-row">
-                <!-- Ícones de ação -->
                 <q-td class="vertical-line body-cell">
                   <q-icon name="edit" class="q-mr-sm action-icon" @click="toggleEdit(props.row)" />
                   <q-icon name="delete" class="q-mr-sm action-icon" @click="deletarCliente(props.row.id)" />
                 </q-td>
                 
-              
                 <q-td class="vertical-line body-cell">{{ props.row.id }}</q-td>
 
-                
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingCliente && editingCliente.id === props.row.id"
                            v-model="editingCliente.nome" dense />
                   <span v-else>{{ props.row.nome }}</span>
                 </q-td>
 
-             
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingCliente && editingCliente.id === props.row.id"
                            v-model="editingCliente.email" dense />
                   <span v-else>{{ props.row.email }}</span>
                 </q-td>
 
-              
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingCliente && editingCliente.id === props.row.id"
                            v-model="editingCliente.telefone" dense />
                   <span v-else>{{ props.row.telefone }}</span>
                 </q-td>
 
-            
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingCliente && editingCliente.id === props.row.id"
                            v-model="editingCliente.endereco" dense />
                   <span v-else>{{ props.row.endereco }}</span>
                 </q-td>
 
-               
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingCliente && editingCliente.id === props.row.id"
                            v-model="editingCliente.cpf" dense />
                   <span v-else>{{ props.row.cpf }}</span>
                 </q-td>
 
-               
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingCliente && editingCliente.id === props.row.id"
                            v-model="editingCliente.status" dense />
                   <span v-else>{{ props.row.status }}</span>
                 </q-td>
 
-               
                 <q-td v-if="editingCliente && editingCliente.id === props.row.id">
                   <q-btn label="Salvar" @click="salvarEdicao(props.row.id)" color="green" />
                 </q-td>
@@ -113,9 +97,7 @@
             </template>
           </q-table>
 
-         
           <div v-else-if="clientesFiltrados && clientesFiltrados.length === 0">Nenhum cliente disponível.</div>
-
         </q-page>
       </q-page-container>
     </q-layout>
@@ -125,9 +107,10 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import clienteService from 'src/services/clienteService';
+import { useClienteStore } from 'src/stores/clienteStore'; // Usando a store
 
 const router = useRouter();
+const clienteStore = useClienteStore(); // Instância da store
 const search = ref('');
 const editingCliente = ref(null);
 
@@ -143,14 +126,14 @@ const columns = [
   { name: 'status', label: 'Status', align: 'left', field: 'status' }
 ];
 
-const loading = ref(true);
-const error = ref(null);
-const clientes = ref([]);
+// Computed properties para acessar dados reativos da store
+const loading = computed(() => clienteStore.loading);
+const error = computed(() => clienteStore.error);
+const clientes = computed(() => clienteStore.clientes);
 
 // Busca e filtra clientes
 onMounted(async () => {
-  await fetchClientesData();
-  loading.value = false;
+  await clienteStore.fetchClientesData();
 });
 
 const clientesFiltrados = computed(() =>
@@ -158,15 +141,6 @@ const clientesFiltrados = computed(() =>
     cliente.nome.toLowerCase().includes(search.value.toLowerCase())
   ) : []
 );
-
-// Funções para gerenciar clientes usando o clienteService
-async function fetchClientesData() {
-  try {
-    clientes.value = await clienteService.getClientesData();
-  } catch (err) {
-    error.value = 'Erro ao carregar clientes';
-  }
-}
 
 function toggleEdit(cliente) {
   if (editingCliente.value && editingCliente.value.id === cliente.id) {
@@ -178,9 +152,8 @@ function toggleEdit(cliente) {
 
 async function salvarEdicao(clienteId) {
   try {
-    await clienteService.updateCliente(clienteId, editingCliente.value);
+    await clienteStore.updateCliente(clienteId, editingCliente.value); // Usando a store para atualizar
     editingCliente.value = null;
-    await fetchClientesData();
   } catch (err) {
     console.error('Erro ao atualizar cliente:', err);
   }
@@ -192,8 +165,7 @@ function adicionarCliente() {
 
 async function deletarCliente(clienteId) {
   try {
-    await clienteService.deleteCliente(clienteId);
-    await fetchClientesData();
+    await clienteStore.deleteCliente(clienteId); // Usando a store para deletar
   } catch (err) {
     console.error("Erro ao deletar cliente:", err);
   }
@@ -237,7 +209,6 @@ async function deletarCliente(clienteId) {
   margin-bottom: 20px;
 }
 
-/* Botão de adicionar cliente */
 .custom-button {
   width: 250px;
   height: 53px;
@@ -246,7 +217,6 @@ async function deletarCliente(clienteId) {
   color: white !important;
 }
 
-/* Campo de busca */
 .custom-input {
   width: 250px;
   height: 37px;

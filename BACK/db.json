@@ -35,7 +35,7 @@
     },
     {
       "id": "4",
-      "cliente_id": 4,
+      "cliente_id": "5",
       "valor_total": "530",
       "data_pagamento": "2023-10-16",
       "desconto": 20,
@@ -177,17 +177,6 @@
       "status": "1"
     },
     {
-      "id": "18",
-      "cliente_id": 18,
-      "valor_total": "270",
-      "data_pagamento": "2023-11-01",
-      "desconto": 5,
-      "forma_pagamento": "Boleto Bancário",
-      "parcela": 0,
-      "vencimento": "2023-12-05",
-      "status": "0"
-    },
-    {
       "id": "19",
       "cliente_id": 19,
       "valor_total": "600",
@@ -208,13 +197,57 @@
       "parcela": 0,
       "vencimento": "2023-12-09",
       "status": "1"
+    },
+    {
+      "id": 21,
+      "cliente_id": "7",
+      "data_pagamento": "2024-11-07",
+      "valor_total": "525",
+      "desconto": "25",
+      "forma_pagamento": "ujgm",
+      "vencimento": "2024-11-15",
+      "status": "nfn",
+      "parcela": "4"
+    },
+    {
+      "id": 22,
+      "cliente_id": "14",
+      "data_pagamento": "2024-10-31",
+      "valor_total": "28",
+      "desconto": "827",
+      "forma_pagamento": "bdgb",
+      "vencimento": "2024-11-12",
+      "status": "dgbdg",
+      "parcela": "74"
+    },
+    {
+      "id": 23,
+      "cliente_id": "4",
+      "data_pagamento": "2024-11-07",
+      "valor_total": "4",
+      "desconto": "52",
+      "forma_pagamento": "2",
+      "vencimento": "2024-11-13",
+      "status": "mug",
+      "parcela": "17"
+    },
+    {
+      "id": 24,
+      "cliente_id": "14",
+      "data_pagamento": "2024-11-06",
+      "valor_total": "275",
+      "desconto": "7275",
+      "forma_pagamento": "fbdf",
+      "vencimento": "2024-11-20",
+      "status": "bdfb",
+      "parcela": "8"
     }
   ],
   "compras": [
     {
       "id": "1",
       "fornecedor_id": 1,
-      "data_compra": "2023-10-15",
+      "data_compra": "2024-10-15",
       "valor_total": "1560",
       "desconto": "55",
       "forma_pagamento": "Cartão de Débito",
@@ -237,8 +270,8 @@
     {
       "id": "2",
       "fornecedor_id": 2,
-      "data_compra": "2023-10-05",
-      "valor_total": 2500,
+      "data_compra": "2024-10-05",
+      "valor_total": "2505",
       "desconto": 100,
       "forma_pagamento": "Boleto Bancário",
       "endereco_entrega": "Rua B, 456, Chapecó, SC",
@@ -256,6 +289,15 @@
           "preco_unitario": 300
         }
       ]
+    },
+    {
+      "id": 3,
+      "fornecedor_id": "4",
+      "data_compra": "2024-11-06",
+      "valor_total": "278",
+      "desconto": "782",
+      "forma_pagamento": "fn",
+      "endereco_entrega": "ndgn"
     }
   ],
   "clientes": [
@@ -297,7 +339,7 @@
     },
     {
       "id": "6",
-      "nome": "Lucas Ferreira",
+      "nome": "Lucas Ferreira ",
       "email": "lucas.ferreira@example.com",
       "telefone": "(49) 99444-4444",
       "endereco": "Rua das Palmeiras, 303, Nova Erechim, SC",
@@ -332,21 +374,21 @@
       "status": "Ativo"
     },
     {
-      "id": "10",
-      "nome": "Renato Barros",
-      "email": "renato.barros@example.com",
-      "telefone": "(49) 99000-8888",
-      "endereco": "Rua das Oliveiras, 707, Maravilha, SC",
-      "cpf": "555.666.777-88",
-      "status": "Ativo"
+      "id": 11,
+      "nome": "Alexandre Junges",
+      "email": "alexandrejunges09@gmail.com",
+      "telefone": "49989016414",
+      "endereco": "Rua São Luiz",
+      "cpf": "572752",
+      "status": ""
     }
   ],
   "vendas": [
     {
       "id": "1",
       "cliente_id": 1,
-      "data_venda": "2023-10-17",
-      "valor_total": "550",
+      "data_venda": "2024-10-10",
+      "valor_total": "5550",
       "desconto": 10,
       "forma_pagamento": "Cartão de Crédito",
       "endereco_entrega": "Rua das Flores, 123, Pinhalzinho, SC",
@@ -372,9 +414,9 @@
     {
       "id": "2",
       "cliente_id": 2,
-      "data_venda": "2023-10-18",
-      "valor_total": 300,
-      "desconto": 5,
+      "data_venda": "2024-11-06",
+      "valor_total": "350",
+      "desconto": "10",
       "forma_pagamento": "Boleto Bancário",
       "endereco_entrega": "Avenida Brasil, 456, Chapecó, SC",
       "produtos": [
@@ -387,6 +429,51 @@
           "desconto": 5
         }
       ]
+    },
+    {
+      "id": 3,
+      "cliente_id": "4",
+      "data_venda": "2024-11-08",
+      "valor_total": "74",
+      "desconto": "58",
+      "forma_pagamento": "bfdb",
+      "endereco_entrega": "fdbdf"
+    },
+    {
+      "id": 4,
+      "cliente_id": "782",
+      "data_venda": "2024-11-26",
+      "valor_total": "282",
+      "desconto": "282",
+      "forma_pagamento": "rtn",
+      "endereco_entrega": "nrtn"
+    },
+    {
+      "id": 5,
+      "cliente_id": "2",
+      "data_venda": "2024-11-05",
+      "valor_total": "1000",
+      "desconto": "0",
+      "forma_pagamento": "Pix",
+      "endereco_entrega": ""
+    },
+    {
+      "id": 6,
+      "cliente_id": "3",
+      "data_venda": "2024-11-06",
+      "valor_total": "1000",
+      "desconto": "0",
+      "forma_pagamento": "asdfasf",
+      "endereco_entrega": ""
+    },
+    {
+      "id": 7,
+      "cliente_id": "4",
+      "data_venda": "2024-11-06",
+      "valor_total": "1000",
+      "desconto": "",
+      "forma_pagamento": "Pix",
+      "endereco_entrega": ""
     }
   ],
   "fornecedores": [
@@ -421,6 +508,14 @@
       "telefone": "(31) 66666-6666",
       "email": "fornecedorD@example.com",
       "cnpj": "22.222.222/0001-44"
+    },
+    {
+      "id": 5,
+      "nome": "adf",
+      "email": "fsdf@fdaf",
+      "telefone": "7527",
+      "endereco": "vsdv",
+      "cnpj": "5785"
     }
   ],
   "produtos": [
@@ -455,10 +550,30 @@
     {
       "id": "4",
       "nome": "Disco de Vinil",
-      "descricao": "Disco de vinil clássico, perfeito para apreciadores de música.",
+      "descricao": "Disco de vinil clássico",
       "preco": 150,
       "quantidade_disponivel": 25,
       "tipo": "Discos"
+    },
+    {
+      "id": 5,
+      "nome": "vfv",
+      "preco": 174,
+      "quantidade_disponivel": 58,
+      "tamanho": "28",
+      "cor": "fyn",
+      "tipo": "fnf",
+      "descricao": "nfyn"
+    },
+    {
+      "id": 6,
+      "nome": "vsf",
+      "preco": 8,
+      "quantidade_disponivel": 58,
+      "tamanho": "2",
+      "cor": "ukg",
+      "tipo": "mugm",
+      "descricao": "mugm"
     }
   ],
   "users": [

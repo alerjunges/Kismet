@@ -121,9 +121,10 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import vendaService from 'src/services/vendaService';
+import { useVendaStore } from 'src/stores/vendaStore';
 
 const router = useRouter();
+const vendaStore = useVendaStore();
 const search = ref('');
 const editingVenda = ref(null);
 
@@ -142,21 +143,11 @@ const columns = [
 // Buscar dados de vendas ao montar o componente
 const loading = ref(true);
 const error = ref(null);
-const vendas = ref([]);
 
 onMounted(async () => {
-  await fetchVendasData();
+  await vendaStore.fetchVendasData();
   loading.value = false;
 });
-
-// Função para buscar dados de vendas
-async function fetchVendasData() {
-  try {
-    vendas.value = await vendaService.getVendasData();
-  } catch (err) {
-    error.value = 'Erro ao carregar vendas';
-  }
-}
 
 // Funções para formatar valores monetários e datas
 function formatarMoeda(valor) {
@@ -170,7 +161,7 @@ function formatarData(data) {
 
 // Filtrar vendas com base na busca
 const vendasFiltradas = computed(() =>
-  vendas.value ? vendas.value.filter(venda =>
+  vendaStore.vendas ? vendaStore.vendas.filter(venda =>
     venda.cliente_id.toString().includes(search.value)
   ) : []
 );
@@ -187,9 +178,9 @@ function toggleEdit(venda) {
 // Função para salvar a edição
 async function salvarEdicao(vendaId) {
   try {
-    await vendaService.updateVenda(vendaId, editingVenda.value);
+    await vendaStore.updateVenda(vendaId, editingVenda.value);
     editingVenda.value = null;
-    fetchVendasData();
+    vendaStore.fetchVendasData();
   } catch (err) {
     console.error('Erro ao atualizar venda:', err);
   }
@@ -208,14 +199,13 @@ function verRelatorioDetalhado() {
 // Função para deletar venda
 async function deletarVenda(vendaId) {
   try {
-    await vendaService.deleteVenda(vendaId);
-    fetchVendasData();
+    await vendaStore.deleteVenda(vendaId);
+    vendaStore.fetchVendasData();
   } catch (err) {
     console.error("Erro ao deletar venda:", err);
   }
 }
 </script>
-
 <style scoped>
 /* Cabeçalho */
 .header-row {

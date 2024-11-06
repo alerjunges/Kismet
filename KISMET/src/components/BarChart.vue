@@ -1,39 +1,56 @@
 <template>
-    <canvas ref="barChart"></canvas>
-  </template>
-  
-  <script setup>
-  import { onMounted, ref } from 'vue';
-  import { Chart, registerables } from 'chart.js';
-  
-  Chart.register(...registerables);
-  
-  const barChart = ref(null);
-  
-  onMounted(() => {
-    const ctx = barChart.value.getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Entrada', 'Saída'],
-        datasets: [{
-          label: 'Transações do Dia',
-          data: [120, 0], // Exemplo de dados
-          backgroundColor: ['#36A2EB', '#FF6384']
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    });
-  });
-  </script>
-  
-  <style scoped>
-  canvas {
-    width: 100% !important;
-    height: 100% !important;
+  <canvas ref="barChart"></canvas>
+</template>
+
+<script setup>
+import { onMounted, watch, ref } from 'vue';
+import { Chart, registerables, LinearScale } from 'chart.js';
+
+// Registrando explicitamente a escala linear
+Chart.register(...registerables, LinearScale);
+
+const props = defineProps(['data']);
+const barChart = ref(null);
+let chartInstance = null;
+
+function renderChart() {
+  if (chartInstance) {
+    chartInstance.destroy(); // Destrói o gráfico existente antes de criar um novo
   }
-  </style>
-  
+
+  const ctx = barChart.value.getContext('2d');
+  chartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Vendas do Dia', 'Compras do Dia'],
+      datasets: [{
+        label: 'Transações do Dia',
+        data: props.data,
+        backgroundColor: ['#36A2EB', '#FF6384']
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          type: 'linear', // Define explicitamente o tipo de escala
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+onMounted(renderChart);
+
+// Observa mudanças nos dados e atualiza o gráfico
+watch(() => props.data, renderChart);
+</script>
+
+<style scoped>
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>

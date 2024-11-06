@@ -78,51 +78,52 @@
   </template>
   
   <script setup>
-  import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-  import vendaService from 'src/services/vendaService';
-  
-  const router = useRouter();
-  
-  const cliente_id = ref('');
-  const data_venda = ref('');
-  const valor_total = ref('');
-  const desconto = ref('');
-  const forma_pagamento = ref('');
-  const endereco_entrega = ref('');
-  
-  function voltar() {
-    router.back();
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useVendaStore } from 'src/stores/vendaStore';
+
+const router = useRouter();
+const vendaStore = useVendaStore();
+
+const cliente_id = ref('');
+const data_venda = ref('');
+const valor_total = ref('');
+const desconto = ref('');
+const forma_pagamento = ref('');
+const endereco_entrega = ref('');
+
+function voltar() {
+  router.back();
+}
+
+async function adicionarVenda() {
+  try {
+    const novaVenda = {
+      cliente_id: cliente_id.value,
+      data_venda: data_venda.value,
+      valor_total: valor_total.value,
+      desconto: desconto.value,
+      forma_pagamento: forma_pagamento.value,
+      endereco_entrega: endereco_entrega.value,
+    };
+
+    await vendaStore.addVenda(novaVenda);
+
+    cliente_id.value = '';
+    data_venda.value = '';
+    valor_total.value = '';
+    desconto.value = '';
+    forma_pagamento.value = '';
+    endereco_entrega.value = '';
+
+    alert('Venda cadastrada com sucesso!');
+    router.push('/venda');
+  } catch (error) {
+    console.error('Erro ao adicionar venda:', error);
+    alert('Erro ao cadastrar venda!');
   }
-  
-  async function adicionarVenda() {
-    try {
-      const novaVenda = {
-        cliente_id: cliente_id.value,
-        data_venda: data_venda.value,
-        valor_total: valor_total.value,
-        desconto: desconto.value,
-        forma_pagamento: forma_pagamento.value,
-        endereco_entrega: endereco_entrega.value,
-      };
-  
-      await vendaService.addVenda(novaVenda);
-  
-      cliente_id.value = '';
-      data_venda.value = '';
-      valor_total.value = '';
-      desconto.value = '';
-      forma_pagamento.value = '';
-      endereco_entrega.value = '';
-  
-      alert('Venda cadastrada com sucesso!');
-      router.push('/vendas');
-    } catch (error) {
-      console.error('Erro ao adicionar venda:', error);
-      alert('Erro ao cadastrar venda!');
-    }
-  }
-  </script>
+}
+</script>
   
   <style scoped>
   .custom-card {

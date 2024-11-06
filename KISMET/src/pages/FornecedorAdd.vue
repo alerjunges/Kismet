@@ -69,9 +69,10 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import fornecedorService from 'src/services/fornecedorService'; // Chame o service de fornecedores
+import { useFornecedorStore } from 'src/stores/fornecedorStore';
 
 const router = useRouter();
+const fornecedorStore = useFornecedorStore();
 
 const nome = ref('');
 const email = ref('');
@@ -93,8 +94,8 @@ async function adicionarFornecedor() {
       cnpj: cnpj.value,
     };
 
-    // Chama o método do serviço para adicionar o fornecedor
-    await fornecedorService.addFornecedor(novoFornecedor);
+    // Adiciona o fornecedor usando a store
+    await fornecedorStore.addFornecedor(novoFornecedor);
 
     // Limpa os campos após o sucesso
     nome.value = '';

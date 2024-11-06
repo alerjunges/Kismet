@@ -75,7 +75,6 @@
             </div>
           </div>
 
-          <!-- Linha para botões Voltar e Salvar -->
           <div class="button-row">
             <q-btn type="submit" color="brown" icon="save" label="Salvar" class="salvar-btn" />
           </div>
@@ -88,9 +87,10 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import produtoService from 'src/services/produtoService'; // Chame o service de produtos
+import { useProdutoStore } from 'src/stores/produtoStore';
 
 const router = useRouter();
+const store = useProdutoStore();
 
 const nome = ref('');
 const preco = ref('');
@@ -101,7 +101,7 @@ const tipo = ref('');
 const descricao = ref('');
 
 function voltar() {
-  router.back(); // Voltar à página anterior
+  router.back();
 }
 
 async function adicionarProduto() {
@@ -116,10 +116,8 @@ async function adicionarProduto() {
       descricao: descricao.value,
     };
 
-    // Chama o método do serviço para adicionar o produto
-    await produtoService.addProduto(novoProduto);
+    await store.addProduto(novoProduto);
 
-    // Resetando o formulário após o sucesso
     nome.value = '';
     preco.value = '';
     quantidade_disponivel.value = '';
@@ -129,8 +127,7 @@ async function adicionarProduto() {
     descricao.value = '';
 
     alert('Produto cadastrado com sucesso!');
-    router.push('/produtos'); // Redireciona para a lista de produtos
-
+    router.push('/produto');
   } catch (error) {
     console.error('Erro ao adicionar produto:', error);
     alert('Erro ao cadastrar produto!');

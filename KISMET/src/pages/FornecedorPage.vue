@@ -1,14 +1,12 @@
 <template>
   <div class="q-pa-md">
     <q-layout view="hHh Lpr lFf" container style="height: 100vh">
-      <!-- Conteúdo principal -->
       <q-page-container>
         <q-page class="q-px-lg q-py-md">
           <q-spinner v-if="loading" size="30px" color="primary" />
           <div v-if="error" class="text-negative">{{ error }}</div>
 
           <div class="row q-mb-md">
-            <!-- Botão de Adicionar Fornecedor -->
             <q-btn
               class="custom-button"
               color="green-10"
@@ -17,7 +15,6 @@
               @click="adicionarFornecedor"
             />
 
-            <!-- Campo de Busca -->
             <q-input
               outlined
               rounded
@@ -29,13 +26,11 @@
               class="custom-input"
             />
 
-            <!-- Contador de Fornecedores -->
             <div class="result-count">
               {{ fornecedoresFiltrados.length }} fornecedor(es) encontrado(s)
             </div>
           </div>
 
-          <!-- Tabela de Fornecedores -->
           <q-table
             :rows="fornecedoresFiltrados"
             :columns="columns"
@@ -96,9 +91,10 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import fornecedorService from 'src/services/fornecedorService';
+import { useFornecedorStore } from 'src/stores/fornecedorStore';
 
 const router = useRouter();
+const fornecedorStore = useFornecedorStore();
 const search = ref('');
 const editingFornecedor = ref(null);
 
@@ -111,22 +107,13 @@ const columns = [
   { name: 'cnpj', label: 'CNPJ', align: 'left', field: 'cnpj' }
 ];
 
-const loading = ref(true);
-const error = ref(null);
-const fornecedores = ref([]);
+const loading = computed(() => fornecedorStore.loading);
+const error = computed(() => fornecedorStore.error);
+const fornecedores = computed(() => fornecedorStore.fornecedores);
 
 onMounted(async () => {
-  await fetchFornecedoresData();
-  loading.value = false;
+  await fornecedorStore.fetchFornecedoresData();
 });
-
-async function fetchFornecedoresData() {
-  try {
-    fornecedores.value = await fornecedorService.getFornecedoresData();
-  } catch (err) {
-    error.value = 'Erro ao carregar fornecedores';
-  }
-}
 
 const fornecedoresFiltrados = computed(() =>
   fornecedores.value ? fornecedores.value.filter(fornecedor =>
@@ -144,9 +131,9 @@ function toggleEdit(fornecedor) {
 
 async function salvarEdicao(fornecedorId) {
   try {
-    await fornecedorService.updateFornecedor(fornecedorId, editingFornecedor.value);
+    await fornecedorStore.updateFornecedor(fornecedorId, editingFornecedor.value);
     editingFornecedor.value = null;
-    await fetchFornecedoresData();
+    await fornecedorStore.fetchFornecedoresData();
   } catch (err) {
     console.error('Erro ao atualizar fornecedor:', err);
   }
@@ -158,8 +145,8 @@ function adicionarFornecedor() {
 
 async function deletarFornecedor(fornecedorId) {
   try {
-    await fornecedorService.deleteFornecedor(fornecedorId);
-    await fetchFornecedoresData();
+    await fornecedorStore.deleteFornecedor(fornecedorId);
+    await fornecedorStore.fetchFornecedoresData();
   } catch (err) {
     console.error("Erro ao deletar fornecedor:", err);
   }

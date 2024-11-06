@@ -1,3 +1,4 @@
+// clienteStore.js
 import { defineStore } from "pinia";
 import clienteService from "src/services/clienteService";
 
@@ -34,18 +35,17 @@ export const useClienteStore = defineStore("clienteStore", {
       }
     },
 
-    // Ação para atualizar um cliente
     async updateCliente(clienteId, clienteAtualizado) {
       this.loading = true;
       this.error = null;
       try {
         const cliente = await clienteService.updateCliente(
-          clienteId,
+          Number(clienteId),
           clienteAtualizado
-        ); // Atualiza cliente via serviço
-        const index = this.clientes.findIndex((c) => c.id === clienteId); // Encontra o índice do cliente na lista
+        ); 
+        const index = this.clientes.findIndex((c) => Number(c.id) === Number(clienteId));
         if (index !== -1) {
-          this.clientes.splice(index, 1, cliente); // Substitui o cliente atualizado na lista local
+          this.clientes.splice(index, 1, cliente);
         }
       } catch (err) {
         this.error = "Erro ao atualizar cliente";
@@ -54,13 +54,12 @@ export const useClienteStore = defineStore("clienteStore", {
       }
     },
 
-    // Ação para deletar um cliente
     async deleteCliente(clienteId) {
       this.loading = true;
       this.error = null;
       try {
-        await clienteService.deleteCliente(clienteId); // Deleta cliente via serviço
-        this.clientes = this.clientes.filter((c) => c.id !== clienteId); // Remove o cliente da lista local
+        await clienteService.deleteCliente(Number(clienteId));
+        this.clientes = this.clientes.filter((c) => Number(c.id) !== Number(clienteId));
       } catch (err) {
         this.error = "Erro ao deletar cliente";
       } finally {

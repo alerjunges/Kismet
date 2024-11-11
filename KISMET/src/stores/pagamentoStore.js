@@ -9,7 +9,6 @@ export const usePagamentoStore = defineStore("pagamentoStore", {
   }),
 
   actions: {
-    // Ação para buscar os dados dos pagamentos
     async fetchPagamentosData() {
       this.loading = true;
       this.error = null;
@@ -22,13 +21,12 @@ export const usePagamentoStore = defineStore("pagamentoStore", {
       }
     },
 
-    // Ação para adicionar um novo pagamento
     async addPagamento(novoPagamento) {
       this.loading = true;
       this.error = null;
       try {
         const pagamentoAdicionado = await pagamentoService.addPagamento(novoPagamento);
-        this.pagamentos.push(pagamentoAdicionado); // Adiciona o pagamento à lista local
+        this.pagamentos.push(pagamentoAdicionado);
       } catch (error) {
         this.error = "Erro ao adicionar pagamento";
       } finally {
@@ -36,15 +34,14 @@ export const usePagamentoStore = defineStore("pagamentoStore", {
       }
     },
 
-    // Ação para atualizar um pagamento existente
     async updatePagamento(pagamentoId, pagamentoAtualizado) {
       this.loading = true;
       this.error = null;
       try {
-        const pagamento = await pagamentoService.updatePagamento(pagamentoId, pagamentoAtualizado); // Atualiza pagamento via serviço
-        const index = this.pagamentos.findIndex((p) => p.id === pagamentoId); // Encontra o índice do pagamento na lista
+        const pagamento = await pagamentoService.updatePagamento(pagamentoId, pagamentoAtualizado); 
+        const index = this.pagamentos.findIndex((p) => p.id === pagamentoId); 
         if (index !== -1) {
-          this.pagamentos.splice(index, 1, pagamento); // Substitui o pagamento atualizado na lista local
+          this.pagamentos.splice(index, 1, pagamento); 
         }
       } catch (err) {
         this.error = "Erro ao atualizar pagamento";
@@ -53,13 +50,12 @@ export const usePagamentoStore = defineStore("pagamentoStore", {
       }
     },
 
-    // Ação para deletar um pagamento
     async deletePagamento(pagamentoId) {
       this.loading = true;
       this.error = null;
       try {
-        await pagamentoService.deletePagamento(pagamentoId); // Deleta pagamento via serviço
-        this.pagamentos = this.pagamentos.filter((p) => p.id !== pagamentoId); // Remove o pagamento da lista local
+        await pagamentoService.deletePagamento(pagamentoId); 
+        this.pagamentos = this.pagamentos.filter((p) => p.id !== pagamentoId); 
       } catch (err) {
         this.error = "Erro ao deletar pagamento";
       } finally {

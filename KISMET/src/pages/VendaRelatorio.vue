@@ -13,6 +13,7 @@
             <p><strong>Desconto:</strong> R$ {{ venda.desconto }}</p>
             <p><strong>Forma de Pagamento:</strong> {{ venda.forma_pagamento }}</p>
             <p><strong>Endereço de Entrega:</strong> {{ venda.endereco_entrega }}</p>
+            <p><strong>Categoria:</strong> {{ venda.categoria }}</p> 
             <p><strong>Observação:</strong> {{ venda.observacao }}</p>
 
             <h5>Produtos:</h5>
@@ -58,9 +59,8 @@ import { useVendaStore } from 'src/stores/vendaStore';
 
 const vendaStore = useVendaStore();
 const loading = computed(() => vendaStore.loading);
-const vendas = computed(() => vendaStore.vendas || []); // Garante que vendas seja sempre um array
+const vendas = computed(() => vendaStore.vendas || []); 
 
-// Colunas da tabela de produtos
 const produtoColumns = [
   { name: 'produto_id', label: 'ID do Produto', align: 'left', field: 'produto_id' },
   { name: 'nome', label: 'Nome do Produto', align: 'left', field: 'nome' },
@@ -70,9 +70,8 @@ const produtoColumns = [
   { name: 'desconto', label: 'Desconto', align: 'left', field: 'desconto' },
 ];
 
-// Buscar dados das vendas ao montar o componente
 onMounted(() => {
-  vendaStore.fetchVendasData(); // Busca as vendas do sistema
+  vendaStore.fetchVendasData(); 
 });
 </script>
 

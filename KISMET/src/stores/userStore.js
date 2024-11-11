@@ -6,10 +6,10 @@ export const useUserStore = defineStore('userStore', {
   }),
   actions: {
     login(username) {
-      this.user = username; // Define o usuário logado
+      this.user = username; 
     },
     logout() {
-      this.user = null; // Limpa o usuário ao fazer logout
+      this.user = null; 
     }
   }
 });

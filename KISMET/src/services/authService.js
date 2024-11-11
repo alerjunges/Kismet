@@ -11,7 +11,7 @@ export async function login(username, password) {
 
     // Verifica se o usuário existe
     if (response.data.length > 0) {
-      return response.data[0]; // Retorna o primeiro usuário encontrado
+      return response.data[0]; 
     } else {
       throw new Error('Usuário ou senha inválidos');
     }

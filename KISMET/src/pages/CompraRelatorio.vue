@@ -14,6 +14,7 @@
             <p><strong>Desconto:</strong> R$ {{ compra.desconto }}</p>
             <p><strong>Forma de Pagamento:</strong> {{ compra.forma_pagamento }}</p>
             <p><strong>Endereço de Entrega:</strong> {{ compra.endereco_entrega }}</p>
+            <p><strong>Categoria:</strong> {{ compra.categoria }}</p> 
             <p><strong>Observação:</strong> {{ compra.observacao }}</p>
             
             <!-- Produtos da Compra -->
@@ -23,7 +24,7 @@
               :columns="produtoColumns"
               row-key="produto_id"
               class="produtos-tabela"
->
+            >
               <template v-slot:body-cell-produto_id="props">
                 <q-td>{{ props.row.produto_id }}</q-td>
               </template>
@@ -61,7 +62,7 @@ import { useCompraStore } from 'src/stores/compraStore';
 
 const store = useCompraStore();
 const loading = computed(() => store.loading);
-const compras = computed(() => store.compras || []); // Garante que `compras` seja um array vazio
+const compras = computed(() => store.compras || []); 
 
 const produtoColumns = [
   { name: 'produto_id', label: 'ID do Produto', align: 'left', field: 'produto_id' },

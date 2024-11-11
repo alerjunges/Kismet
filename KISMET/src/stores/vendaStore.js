@@ -9,7 +9,6 @@ export const useVendaStore = defineStore("vendaStore", {
   }),
 
   actions: {
-    // Ação para buscar os dados de vendas
     async fetchVendasData() {
       this.loading = true;
       this.error = null;
@@ -22,13 +21,12 @@ export const useVendaStore = defineStore("vendaStore", {
       }
     },
 
-    // Ação para adicionar uma nova venda
     async addVenda(novaVenda) {
       this.loading = true;
       this.error = null;
       try {
         const vendaAdicionada = await vendaService.addVenda(novaVenda);
-        this.vendas.push(vendaAdicionada); // Adiciona a venda à lista local
+        this.vendas.push(vendaAdicionada); 
       } catch (error) {
         this.error = "Erro ao adicionar venda";
       } finally {
@@ -36,15 +34,14 @@ export const useVendaStore = defineStore("vendaStore", {
       }
     },
 
-    // Ação para atualizar uma venda existente
     async updateVenda(vendaId, vendaAtualizada) {
       this.loading = true;
       this.error = null;
       try {
-        const venda = await vendaService.updateVenda(vendaId, vendaAtualizada); // Atualiza a venda via serviço
-        const index = this.vendas.findIndex((v) => v.id === vendaId); // Encontra o índice da venda na lista
+        const venda = await vendaService.updateVenda(vendaId, vendaAtualizada); 
+        const index = this.vendas.findIndex((v) => v.id === vendaId);
         if (index !== -1) {
-          this.vendas.splice(index, 1, venda); // Substitui a venda atualizada na lista local
+          this.vendas.splice(index, 1, venda); 
         }
       } catch (err) {
         this.error = "Erro ao atualizar venda";
@@ -53,13 +50,12 @@ export const useVendaStore = defineStore("vendaStore", {
       }
     },
 
-    // Ação para deletar uma venda
     async deleteVenda(vendaId) {
       this.loading = true;
       this.error = null;
       try {
-        await vendaService.deleteVenda(vendaId); // Deleta a venda via serviço
-        this.vendas = this.vendas.filter((v) => v.id !== vendaId); // Remove a venda da lista local
+        await vendaService.deleteVenda(vendaId); 
+        this.vendas = this.vendas.filter((v) => v.id !== vendaId); 
       } catch (err) {
         this.error = "Erro ao deletar venda";
       } finally {

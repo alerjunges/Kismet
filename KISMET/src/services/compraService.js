@@ -1,21 +1,18 @@
 import { api } from "src/boot/axios";
 
 export default {
-  // Função para obter os dados das compras
   async getComprasData() {
     try {
       const response = await api.get("/compras");
-      return response.data; // Retorna a lista de compras
+      return response.data;
     } catch (error) {
       console.error("Erro ao carregar dados de compras:", error);
       throw error;
     }
   },
 
-  // Função para adicionar uma nova compra com o próximo ID
   async addCompra(novaCompra) {
     try {
-      // buscar todas as compras existentes
       const compras = await this.getComprasData();
       console.log(compras);
 
@@ -35,7 +32,6 @@ export default {
     }
   },
 
-  // Função para atualizar uma compra
   async updateCompra(compraId, compraAtualizada) {
     try {
       const response = await api.put(
@@ -50,7 +46,6 @@ export default {
     }
   },
 
-  // Função para deletar uma compra
   async deleteCompra(compraId) {
     try {
       await api.delete(`/compras/${compraId}`);

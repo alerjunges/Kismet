@@ -32,7 +32,6 @@
             </div>
           </div>
 
-          <!-- Tabela de Vendas -->
           <q-table
             v-if="vendasFiltradas && vendasFiltradas.length > 0 && !loading && !error"
             :rows="vendasFiltradas"
@@ -51,66 +50,67 @@
 
             <template v-slot:body="props">
               <q-tr :props="props" class="body-row">
-                <!-- Ícones de ação com tamanho maior -->
                 <q-td class="vertical-line body-cell">
                   <q-icon name="edit" class="q-mr-sm action-icon" @click="toggleEdit(props.row)" />
                   <q-icon name="delete" class="q-mr-sm action-icon" @click="deletarVenda(props.row.id)" />
                 </q-td>
-                
-                <!-- Venda ID (não editável) -->
+
                 <q-td class="vertical-line body-cell">{{ props.row.id }}</q-td>
 
-                <!-- Cliente ID (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingVenda && editingVenda.id === props.row.id"
                            v-model="editingVenda.cliente_id" dense />
                   <span v-else>{{ props.row.cliente_id }}</span>
                 </q-td>
 
-                <!-- Data da Venda (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingVenda && editingVenda.id === props.row.id"
                            v-model="editingVenda.data_venda" dense />
                   <span v-else>{{ formatarData(props.row.data_venda) }}</span>
                 </q-td>
 
-                <!-- Valor Total (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingVenda && editingVenda.id === props.row.id"
                            v-model="editingVenda.valor_total" dense />
                   <span v-else>{{ formatarMoeda(props.row.valor_total) }}</span>
                 </q-td>
 
-                <!-- Desconto (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingVenda && editingVenda.id === props.row.id"
                            v-model="editingVenda.desconto" dense />
                   <span v-else>{{ formatarMoeda(props.row.desconto) }}</span>
                 </q-td>
 
-                <!-- Forma de Pagamento (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingVenda && editingVenda.id === props.row.id"
                            v-model="editingVenda.forma_pagamento" dense />
                   <span v-else>{{ props.row.forma_pagamento }}</span>
                 </q-td>
 
-                <!-- Endereço de Entrega (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingVenda && editingVenda.id === props.row.id"
                            v-model="editingVenda.endereco_entrega" dense />
                   <span v-else>{{ props.row.endereco_entrega }}</span>
                 </q-td>
+               
+                <q-td class="vertical-line body-cell">
+  <q-select v-if="editingVenda && editingVenda.id === props.row.id"
+            v-model="editingVenda.categoria"
+            :options="categorias"
+            option-value="label" 
+            option-label="label"
+            dense>
+  </q-select>
+  <span v-else>{{ props.row.categoria }}</span>
+</q-td>
 
-                <!-- Botão para salvar as edições -->
+
                 <q-td v-if="editingVenda && editingVenda.id === props.row.id">
                   <q-btn label="Salvar" @click="salvarEdicao(props.row.id)" color="green" />
                 </q-td>
               </q-tr>
             </template>
           </q-table>
-
-          <!-- Caso não haja vendas disponíveis -->
           <div v-else-if="vendasFiltradas && vendasFiltradas.length === 0">Nenhuma venda disponível.</div>
         </q-page>
       </q-page-container>
@@ -119,7 +119,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useVendaStore } from 'src/stores/vendaStore';
 
@@ -128,7 +128,19 @@ const vendaStore = useVendaStore();
 const search = ref('');
 const editingVenda = ref(null);
 
-// Definindo colunas da tabela
+const categorias = [
+  { label: 'Roupas', value: 'Roupas' },
+  { label: 'Antiquário', value: 'Antiquário' },
+  { label: 'Disco', value: 'Disco' },
+  { label: 'Livro', value: 'Livro' }
+];
+
+watch(() => editingVenda.value?.categoria, (newValue) => {
+  if (newValue && typeof newValue === 'object') {
+    editingVenda.value.categoria = newValue.label;  
+  }
+});
+
 const columns = [
   { name: 'acao', label: 'Ações', align: 'center' },
   { name: 'id', label: 'ID Venda', align: 'left', field: 'id' },
@@ -137,10 +149,10 @@ const columns = [
   { name: 'valor_total', label: 'Valor Total', align: 'right', field: 'valor_total' },
   { name: 'desconto', label: 'Desconto', align: 'right', field: 'desconto' },
   { name: 'forma_pagamento', label: 'Forma de Pagamento', align: 'left', field: 'forma_pagamento' },
-  { name: 'endereco_entrega', label: 'Endereço de Entrega', align: 'left', field: 'endereco_entrega' }
+  { name: 'endereco_entrega', label: 'Endereço de Entrega', align: 'left', field: 'endereco_entrega' },
+  { name: 'categoria', label: 'Categoria', align: 'left', field: 'categoria' }
 ];
 
-// Buscar dados de vendas ao montar o componente
 const loading = ref(true);
 const error = ref(null);
 
@@ -149,7 +161,6 @@ onMounted(async () => {
   loading.value = false;
 });
 
-// Funções para formatar valores monetários e datas
 function formatarMoeda(valor) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
 }
@@ -159,14 +170,12 @@ function formatarData(data) {
   return dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
-// Filtrar vendas com base na busca
 const vendasFiltradas = computed(() =>
   vendaStore.vendas ? vendaStore.vendas.filter(venda =>
     venda.cliente_id.toString().includes(search.value)
   ) : []
 );
 
-// Função para alternar o modo de edição
 function toggleEdit(venda) {
   if (editingVenda.value && editingVenda.value.id === venda.id) {
     editingVenda.value = null;
@@ -175,9 +184,12 @@ function toggleEdit(venda) {
   }
 }
 
-// Função para salvar a edição
 async function salvarEdicao(vendaId) {
   try {
+    if (typeof editingVenda.value.categoria === 'object' && editingVenda.value.categoria !== null) {
+      editingVenda.value.categoria = editingVenda.value.categoria.label;
+    }
+    
     await vendaStore.updateVenda(vendaId, editingVenda.value);
     editingVenda.value = null;
     vendaStore.fetchVendasData();
@@ -186,17 +198,14 @@ async function salvarEdicao(vendaId) {
   }
 }
 
-// Função para adicionar venda
 function adicionarVenda() {
   router.push('/adicionar-venda');
 }
 
-// Função para ver o relatório detalhado
 function verRelatorioDetalhado() {
   router.push('/relatorio-venda');
 }
 
-// Função para deletar venda
 async function deletarVenda(vendaId) {
   try {
     await vendaStore.deleteVenda(vendaId);
@@ -207,41 +216,36 @@ async function deletarVenda(vendaId) {
 }
 </script>
 <style scoped>
-/* Cabeçalho */
+
 .header-row {
   background-color: #04442C;
   color: white;
   font-weight: bold;
 }
 
-/* Customização da célula */
 .body-cell {
   padding: 12px;
   border-bottom: 1px solid #ddd;
 }
 
-/* Linha da tabela */
 .body-row {
   border-bottom: 1px solid #ddd;
 }
 
-/* Adicionando linha vertical entre colunas */
 .vertical-line {
   border-right: 1px solid #ddd;
 }
 
-/* Estilizando os ícones de ação */
 .action-icon {
-  font-size: 20px; /* Aumenta o tamanho dos ícones */
+  font-size: 20px; 
   cursor: pointer;
   color: #04442C;
 }
 
 .action-icon:hover {
-  color: #e74c3c; /* Cor ao passar o mouse */
+  color: #e74c3c; 
 }
 
-/* Estilo da linha do botão */
 .row {
   display: flex;
   align-items: center;
@@ -249,7 +253,6 @@ async function deletarVenda(vendaId) {
   margin-bottom: 20px;
 }
 
-/* Botão de adicionar venda e relatório detalhado */
 .custom-button {
   width: 250px;
   height: 53px;
@@ -258,14 +261,12 @@ async function deletarVenda(vendaId) {
   color: white !important;
 }
 
-/* Estilo do contador de vendas */
 .result-count {
   margin-left: auto;
   font-size: 16px;
   font-weight: bold;
 }
 
-/* Estilo da tabela */
 .custom-table {
   width: 100%;
   text-align: left;

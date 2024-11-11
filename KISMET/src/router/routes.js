@@ -4,7 +4,7 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       {
-        path: "", // Página inicial (Informações Gerais)
+        path: "", 
         component: () => import("pages/DashBoardPage.vue"),
       },
       {
@@ -66,7 +66,6 @@ const routes = [
     ],
   },
 
-  // Página de Login fora do layout principal
   {
     path: "/login",
     component: () => import("pages/LoginPage.vue"),

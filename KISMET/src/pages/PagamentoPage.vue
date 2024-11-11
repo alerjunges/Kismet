@@ -204,6 +204,7 @@ async function deletarPagamento(pagamentoId) {
   margin-left: auto;
   font-size: 16px;
   font-weight: bold;
+  margin-top: 15px;
 }
 
 .custom-table {

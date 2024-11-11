@@ -1,21 +1,19 @@
 import { api } from "src/boot/axios";
 
 export default {
-  // Função para obter os dados dos produtos
+
   async getProdutosData() {
     try {
       const response = await api.get("/produtos");
-      return response.data; // Retorna a lista de produtos
+      return response.data; 
     } catch (error) {
       console.error("Erro ao carregar dados de produtos:", error);
       throw error;
     }
   },
 
-  // Função para adicionar um novo produto com o próximo ID
   async addProduto(novoProduto) {
     try {
-      // Buscar todos os produtos existentes
       const produtos = await this.getProdutosData();
       console.log(produtos);
 
@@ -35,7 +33,6 @@ export default {
     }
   },
 
-  // Função para atualizar um produto
   async updateProduto(produtoId, produtoAtualizado) {
     try {
       const response = await api.put(
@@ -50,7 +47,6 @@ export default {
     }
   },
 
-  // Função para deletar um produto
   async deleteProduto(produtoId) {
     try {
       await api.delete(`/produtos/${produtoId}`);

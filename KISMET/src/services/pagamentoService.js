@@ -1,21 +1,18 @@
 import { api } from "src/boot/axios";
 
 export default {
-  // Função para obter os dados dos pagamentos
   async getPagamentosData() {
     try {
       const response = await api.get("/pagamentos");
-      return response.data; // Retorna a lista de pagamentos
+      return response.data; 
     } catch (error) {
       console.error("Erro ao carregar dados de pagamentos:", error);
       throw error;
     }
   },
 
-  // Função para adicionar um novo pagamento com o próximo ID
   async addPagamento(novoPagamento) {
     try {
-      // Buscar todos os pagamentos existentes
       const pagamentos = await this.getPagamentosData();
       console.log(pagamentos);
 
@@ -35,7 +32,6 @@ export default {
     }
   },
 
-  // Função para atualizar um pagamento
   async updatePagamento(pagamentoId, pagamentoAtualizado) {
     try {
       const response = await api.put(
@@ -50,7 +46,6 @@ export default {
     }
   },
 
-  // Função para deletar um pagamento
   async deletePagamento(pagamentoId) {
     try {
       await api.delete(`/pagamentos/${pagamentoId}`);

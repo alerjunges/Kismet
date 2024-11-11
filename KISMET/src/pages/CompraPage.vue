@@ -93,6 +93,17 @@
                   <span v-else>{{ props.row.endereco_entrega }}</span>
                 </q-td>
 
+                <!-- Novo campo Categoria -->
+                <q-td class="vertical-line body-cell">
+                  <q-select
+                    v-if="editingCompra && editingCompra.id === props.row.id"
+                    v-model="editingCompra.categoria"
+                    :options="categoriaOptions"
+                    dense
+                  />
+                  <span v-else>{{ props.row.categoria }}</span>
+                </q-td>
+
                 <q-td v-if="editingCompra && editingCompra.id === props.row.id">
                   <q-btn label="Salvar" @click="salvarEdicao(props.row.id)" color="green" />
                 </q-td>
@@ -117,6 +128,13 @@ const compraStore = useCompraStore();
 const search = ref('');
 const editingCompra = ref(null);
 
+const categoriaOptions = [
+  { label: 'Roupas', value: 'Roupas' },
+  { label: 'Antiquário', value: 'Antiquário' },
+  { label: 'Disco', value: 'Disco' },
+  { label: 'Livro', value: 'Livro' }
+];
+
 const columns = [
   { name: 'acao', label: 'Ações', align: 'center' },
   { name: 'id', label: 'ID Compra', align: 'left', field: 'id' },
@@ -125,15 +143,14 @@ const columns = [
   { name: 'valor_total', label: 'Valor Total', align: 'right', field: 'valor_total' },
   { name: 'desconto', label: 'Desconto', align: 'right', field: 'desconto' },
   { name: 'forma_pagamento', label: 'Forma de Pagamento', align: 'left', field: 'forma_pagamento' },
-  { name: 'endereco_entrega', label: 'Endereço de Entrega', align: 'left', field: 'endereco_entrega' }
+  { name: 'endereco_entrega', label: 'Endereço de Entrega', align: 'left', field: 'endereco_entrega' },
+  { name: 'categoria', label: 'Categoria', align: 'left', field: 'categoria' } 
 ];
 
-// Computed properties para reatividade
 const loading = computed(() => compraStore.loading);
 const error = computed(() => compraStore.error);
 const compras = computed(() => compraStore.compras);
 
-// Funções para formatar valores monetários e datas
 function formatarMoeda(valor) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
 }
@@ -143,19 +160,16 @@ function formatarData(data) {
   return dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
-// Filtrar compras com base na busca
 const comprasFiltradas = computed(() =>
   compras.value ? compras.value.filter(compra =>
     compra.fornecedor_id.toString().includes(search.value)
   ) : []
 );
 
-// Buscar dados de compras ao montar o componente
 onMounted(async () => {
   await compraStore.fetchComprasData();
 });
 
-// Alternar o modo de edição
 function toggleEdit(compra) {
   if (editingCompra.value && editingCompra.value.id === compra.id) {
     editingCompra.value = null;
@@ -164,9 +178,12 @@ function toggleEdit(compra) {
   }
 }
 
-// Função para salvar a edição
 async function salvarEdicao(compraId) {
   try {
+    if (typeof editingCompra.value.categoria === 'object' && editingCompra.value.categoria !== null) {
+      editingCompra.value.categoria = editingCompra.value.categoria.label;
+    }
+    
     await compraStore.updateCompra(compraId, editingCompra.value);
     editingCompra.value = null;
   } catch (err) {
@@ -174,17 +191,14 @@ async function salvarEdicao(compraId) {
   }
 }
 
-// Função para adicionar compra
 function adicionarCompra() {
   router.push('/adicionar-compra');
 }
 
-// Função para ver o relatório detalhado
 function verRelatorioDetalhado() {
   router.push('/relatorio-compra');
 }
 
-// Função para deletar compra
 async function deletarCompra(compraId) {
   try {
     await compraStore.deleteCompra(compraId);
@@ -231,7 +245,6 @@ async function deletarCompra(compraId) {
   margin-bottom: 20px;
 }
 
-/* Botão de adicionar compra e relatório detalhado */
 .custom-button {
   width: 250px;
   height: 53px;

@@ -45,7 +45,7 @@
       "status": "1"
     },
     {
-      "id": "6",
+      "id": "5",
       "cliente_id": 6,
       "valor_total": "410",
       "data_pagamento": "2023-10-19",
@@ -56,7 +56,7 @@
       "status": "0"
     },
     {
-      "id": "7",
+      "id": "6",
       "cliente_id": 7,
       "valor_total": "200",
       "data_pagamento": "2023-10-20",
@@ -67,7 +67,7 @@
       "status": "1"
     },
     {
-      "id": "8",
+      "id": "7",
       "cliente_id": 8,
       "valor_total": "550",
       "data_pagamento": "2023-10-21",
@@ -78,7 +78,7 @@
       "status": "0"
     },
     {
-      "id": "9",
+      "id": "8",
       "cliente_id": 9,
       "valor_total": "670",
       "data_pagamento": "2023-10-22",
@@ -89,7 +89,7 @@
       "status": "1"
     },
     {
-      "id": "10",
+      "id": "9",
       "cliente_id": 10,
       "valor_total": "190",
       "data_pagamento": "2023-10-23",
@@ -100,7 +100,7 @@
       "status": "1"
     },
     {
-      "id": "11",
+      "id": "10",
       "cliente_id": 11,
       "valor_total": "720",
       "data_pagamento": "2023-10-24",
@@ -111,7 +111,7 @@
       "status": "1"
     },
     {
-      "id": "12",
+      "id": "11",
       "cliente_id": 12,
       "valor_total": "810",
       "data_pagamento": "2023-10-25",
@@ -122,7 +122,7 @@
       "status": "0"
     },
     {
-      "id": "13",
+      "id": "12",
       "cliente_id": 13,
       "valor_total": "900",
       "data_pagamento": "2023-10-26",
@@ -133,7 +133,7 @@
       "status": "1"
     },
     {
-      "id": "14",
+      "id": "13",
       "cliente_id": 14,
       "valor_total": "240",
       "data_pagamento": "2023-10-27",
@@ -144,7 +144,7 @@
       "status": "1"
     },
     {
-      "id": "15",
+      "id": "14",
       "cliente_id": 15,
       "valor_total": "360",
       "data_pagamento": "2023-10-28",
@@ -153,94 +153,6 @@
       "parcela": 0,
       "vencimento": "2023-11-25",
       "status": "0"
-    },
-    {
-      "id": "16",
-      "cliente_id": 16,
-      "valor_total": "430",
-      "data_pagamento": "2023-10-29",
-      "desconto": 15,
-      "forma_pagamento": "Cartão de Débito",
-      "parcela": 0,
-      "vencimento": "2023-11-27",
-      "status": "1"
-    },
-    {
-      "id": "17",
-      "cliente_id": 17,
-      "valor_total": "510",
-      "data_pagamento": "2023-10-30",
-      "desconto": 20,
-      "forma_pagamento": "Pix",
-      "parcela": 0,
-      "vencimento": "2023-11-30",
-      "status": "1"
-    },
-    {
-      "id": "19",
-      "cliente_id": 19,
-      "valor_total": "600",
-      "data_pagamento": "2023-11-02",
-      "desconto": 15,
-      "forma_pagamento": "Cartão de Débito",
-      "parcela": 0,
-      "vencimento": "2023-12-07",
-      "status": "1"
-    },
-    {
-      "id": "20",
-      "cliente_id": 20,
-      "valor_total": "330",
-      "data_pagamento": "2023-11-03",
-      "desconto": 10,
-      "forma_pagamento": "Pix",
-      "parcela": 0,
-      "vencimento": "2023-12-09",
-      "status": "1"
-    },
-    {
-      "id": 21,
-      "cliente_id": "7",
-      "data_pagamento": "2024-11-07",
-      "valor_total": "525",
-      "desconto": "25",
-      "forma_pagamento": "ujgm",
-      "vencimento": "2024-11-15",
-      "status": "nfn",
-      "parcela": "4"
-    },
-    {
-      "id": 22,
-      "cliente_id": "14",
-      "data_pagamento": "2024-10-31",
-      "valor_total": "28",
-      "desconto": "827",
-      "forma_pagamento": "bdgb",
-      "vencimento": "2024-11-12",
-      "status": "dgbdg",
-      "parcela": "74"
-    },
-    {
-      "id": 23,
-      "cliente_id": "4",
-      "data_pagamento": "2024-11-07",
-      "valor_total": "4",
-      "desconto": "52",
-      "forma_pagamento": "2",
-      "vencimento": "2024-11-13",
-      "status": "mug",
-      "parcela": "17"
-    },
-    {
-      "id": 24,
-      "cliente_id": "14",
-      "data_pagamento": "2024-11-06",
-      "valor_total": "275",
-      "desconto": "7275",
-      "forma_pagamento": "fbdf",
-      "vencimento": "2024-11-20",
-      "status": "bdfb",
-      "parcela": "8"
     }
   ],
   "compras": [
@@ -248,10 +160,11 @@
       "id": "1",
       "fornecedor_id": 1,
       "data_compra": "2024-10-15",
-      "valor_total": "1560",
+      "valor_total": "1575",
       "desconto": "55",
       "forma_pagamento": "Cartão de Débito",
       "endereco_entrega": "Rua A, 123, Pinhalzinho, SC",
+      "categoria": "Disco",
       "produtos": [
         {
           "produto_id": 101,
@@ -275,6 +188,7 @@
       "desconto": 100,
       "forma_pagamento": "Boleto Bancário",
       "endereco_entrega": "Rua B, 456, Chapecó, SC",
+      "categoria": "Livro",
       "produtos": [
         {
           "produto_id": 103,
@@ -291,19 +205,136 @@
       ]
     },
     {
-      "id": 3,
-      "fornecedor_id": "4",
-      "data_compra": "2024-11-06",
-      "valor_total": "278",
-      "desconto": "782",
-      "forma_pagamento": "fn",
-      "endereco_entrega": "ndgn"
+      "id": "3",
+      "fornecedor_id": 3,
+      "data_compra": "2024-11-20",
+      "valor_total": "1800",
+      "desconto": "20",
+      "forma_pagamento": "Transferência Bancária",
+      "endereco_entrega": "Avenida Central, 250, Florianópolis, SC",
+      "categoria": "Roupas",
+      "produtos": [
+        {
+          "produto_id": 105,
+          "quantidade": 12,
+          "subtotal": 1200,
+          "preco_unitario": 100
+        },
+        {
+          "produto_id": 106,
+          "quantidade": 6,
+          "subtotal": 600,
+          "preco_unitario": 100
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "fornecedor_id": 4,
+      "data_compra": "2024-09-30",
+      "valor_total": "3500",
+      "desconto": "200",
+      "forma_pagamento": "Pix",
+      "endereco_entrega": "Rua das Acácias, 90, Curitiba, PR",
+      "categoria": "Antiquário",
+      "produtos": [
+        {
+          "produto_id": 107,
+          "quantidade": 2,
+          "subtotal": 2000,
+          "preco_unitario": 1000
+        },
+        {
+          "produto_id": 108,
+          "quantidade": 3,
+          "subtotal": 1500,
+          "preco_unitario": 500
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "fornecedor_id": 5,
+      "data_compra": "2024-08-15",
+      "valor_total": "750",
+      "desconto": "30",
+      "forma_pagamento": "Cartão de Crédito",
+      "endereco_entrega": "Rua das Palmeiras, 15, São Paulo, SP",
+      "categoria": "Livro",
+      "produtos": [
+        {
+          "produto_id": 109,
+          "quantidade": 5,
+          "subtotal": 500,
+          "preco_unitario": 100
+        },
+        {
+          "produto_id": 110,
+          "quantidade": 2,
+          "subtotal": 250,
+          "preco_unitario": 125
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "fornecedor_id": 6,
+      "data_compra": "2024-07-05",
+      "valor_total": "2200",
+      "desconto": "150",
+      "forma_pagamento": "Dinheiro",
+      "endereco_entrega": "Avenida Paulista, 180, São Paulo, SP",
+      "categoria": "Disco",
+      "produtos": [
+        {
+          "produto_id": 111,
+          "quantidade": 15,
+          "subtotal": 1500,
+          "preco_unitario": 100
+        },
+        {
+          "produto_id": 112,
+          "quantidade": 7,
+          "subtotal": 700,
+          "preco_unitario": 100
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "fornecedor_id": 7,
+      "data_compra": "2024-06-22",
+      "valor_total": "1250",
+      "desconto": "75",
+      "forma_pagamento": "Cartão de Débito",
+      "endereco_entrega": "Rua das Laranjeiras, 50, Salvador, BA",
+      "categoria": "Roupas",
+      "produtos": [
+        {
+          "produto_id": 113,
+          "quantidade": 4,
+          "subtotal": 600,
+          "preco_unitario": 150
+        },
+        {
+          "produto_id": 114,
+          "quantidade": 3,
+          "subtotal": 450,
+          "preco_unitario": 150
+        },
+        {
+          "produto_id": 115,
+          "quantidade": 2,
+          "subtotal": 200,
+          "preco_unitario": 100
+        }
+      ]
     }
   ],
   "clientes": [
     {
       "id": "1",
-      "nome": "João da Sander",
+      "nome": "João da Silva",
       "email": "joao.silva@example.com",
       "telefone": "(49) 99988-1234",
       "endereco": "Rua das Flores, 123, Pinhalzinho, SC",
@@ -321,7 +352,7 @@
     },
     {
       "id": "3",
-      "nome": "Pedro Santos",
+      "nome": "Pedro Dos Santos",
       "email": "pedro.santos@example.com",
       "telefone": "(49) 99777-1111",
       "endereco": "Rua São José, 789, Saudades, SC",
@@ -338,7 +369,7 @@
       "status": "Ativo"
     },
     {
-      "id": "6",
+      "id": "5",
       "nome": "Lucas Ferreira ",
       "email": "lucas.ferreira@example.com",
       "telefone": "(49) 99444-4444",
@@ -347,7 +378,7 @@
       "status": "Ativo"
     },
     {
-      "id": "7",
+      "id": "6",
       "nome": "Clara Costa",
       "email": "clara.costa@example.com",
       "telefone": "(49) 99333-5555",
@@ -356,7 +387,7 @@
       "status": "Ativo"
     },
     {
-      "id": "8",
+      "id": "7",
       "nome": "Felipe Moreira",
       "email": "felipe.moreira@example.com",
       "telefone": "(49) 99222-6666",
@@ -365,7 +396,7 @@
       "status": "Inativo"
     },
     {
-      "id": "9",
+      "id": "8",
       "nome": "Isabela Rocha",
       "email": "isabela.rocha@example.com",
       "telefone": "(49) 99111-7777",
@@ -374,13 +405,13 @@
       "status": "Ativo"
     },
     {
-      "id": 11,
-      "nome": "Alexandre Junges",
-      "email": "alexandrejunges09@gmail.com",
-      "telefone": "49989016414",
-      "endereco": "Rua São Luiz",
-      "cpf": "572752",
-      "status": ""
+      "id": "9",
+      "nome": "João Vieira",
+      "email": "joao.vieira@example.com",
+      "telefone": "(49) 99111-8888",
+      "endereco": "Anta Gorda, 807, Pinhalzinho, SC",
+      "cpf": "777.888.999-00",
+      "status": "Ativo"
     }
   ],
   "vendas": [
@@ -392,6 +423,7 @@
       "desconto": 10,
       "forma_pagamento": "Cartão de Crédito",
       "endereco_entrega": "Rua das Flores, 123, Pinhalzinho, SC",
+      "categoria": "Roupas",
       "produtos": [
         {
           "produto_id": 1,
@@ -419,6 +451,7 @@
       "desconto": "10",
       "forma_pagamento": "Boleto Bancário",
       "endereco_entrega": "Avenida Brasil, 456, Chapecó, SC",
+      "categoria": "Antiquário",
       "produtos": [
         {
           "produto_id": 3,
@@ -431,49 +464,432 @@
       ]
     },
     {
-      "id": 3,
-      "cliente_id": "4",
+      "id": "3",
+      "cliente_id": 3,
+      "data_venda": "2024-10-15",
+      "valor_total": "1200",
+      "desconto": 15,
+      "forma_pagamento": "Pix",
+      "endereco_entrega": "Rua Silva, 789, Curitiba, PR",
+      "categoria": "Disco",
+      "produtos": [
+        {
+          "produto_id": 4,
+          "nome": "Vinil Clássico",
+          "quantidade": 3,
+          "preco_unitario": 400,
+          "subtotal": 1200,
+          "desconto": 15
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "cliente_id": 4,
+      "data_venda": "2024-12-05",
+      "valor_total": "600",
+      "desconto": 0,
+      "forma_pagamento": "Dinheiro",
+      "endereco_entrega": "Rua dos Artistas, 34, São Paulo, SP",
+      "categoria": "Livro",
+      "produtos": [
+        {
+          "produto_id": 5,
+          "nome": "Coleção de Clássicos",
+          "quantidade": 4,
+          "preco_unitario": 150,
+          "subtotal": 600,
+          "desconto": 0
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "cliente_id": 5,
+      "data_venda": "2024-11-10",
+      "valor_total": "850",
+      "desconto": 25,
+      "forma_pagamento": "Cartão de Débito",
+      "endereco_entrega": "Rua Verde, 102, Florianópolis, SC",
+      "categoria": "Roupas",
+      "produtos": [
+        {
+          "produto_id": 6,
+          "nome": "Casaco de Inverno",
+          "quantidade": 2,
+          "preco_unitario": 400,
+          "subtotal": 800,
+          "desconto": 25
+        },
+        {
+          "produto_id": 7,
+          "nome": "Gorro",
+          "quantidade": 1,
+          "preco_unitario": 50,
+          "subtotal": 50,
+          "desconto": 0
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "cliente_id": 6,
+      "data_venda": "2024-10-20",
+      "valor_total": "950",
+      "desconto": 20,
+      "forma_pagamento": "Transferência Bancária",
+      "endereco_entrega": "Avenida Central, 1000, Porto Alegre, RS",
+      "categoria": "Antiquário",
+      "produtos": [
+        {
+          "produto_id": 8,
+          "nome": "Relógio Antigo",
+          "quantidade": 1,
+          "preco_unitario": 950,
+          "subtotal": 950,
+          "desconto": 20
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "cliente_id": 7,
+      "data_venda": "2024-11-20",
+      "valor_total": "750",
+      "desconto": 30,
+      "forma_pagamento": "Cartão de Crédito",
+      "endereco_entrega": "Rua Poesia, 22, Recife, PE",
+      "categoria": "Disco",
+      "produtos": [
+        {
+          "produto_id": 9,
+          "nome": "Vinil Rock Anos 80",
+          "quantidade": 3,
+          "preco_unitario": 250,
+          "subtotal": 750,
+          "desconto": 30
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "cliente_id": 8,
+      "data_venda": "2024-12-01",
+      "valor_total": "420",
+      "desconto": 0,
+      "forma_pagamento": "Boleto Bancário",
+      "endereco_entrega": "Rua Flores, 678, Natal, RN",
+      "categoria": "Livro",
+      "produtos": [
+        {
+          "produto_id": 10,
+          "nome": "Guia de Jardinagem",
+          "quantidade": 6,
+          "preco_unitario": 70,
+          "subtotal": 420,
+          "desconto": 0
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "cliente_id": 9,
+      "data_venda": "2024-10-25",
+      "valor_total": "1300",
+      "desconto": 50,
+      "forma_pagamento": "Cartão de Crédito",
+      "endereco_entrega": "Rua Praia, 450, Vitória, ES",
+      "categoria": "Roupas",
+      "produtos": [
+        {
+          "produto_id": 11,
+          "nome": "Jaqueta Jeans",
+          "quantidade": 4,
+          "preco_unitario": 325,
+          "subtotal": 1300,
+          "desconto": 50
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "cliente_id": 10,
+      "data_venda": "2024-11-30",
+      "valor_total": "280",
+      "desconto": 0,
+      "forma_pagamento": "Pix",
+      "endereco_entrega": "Rua Amarela, 77, Salvador, BA",
+      "categoria": "Antiquário",
+      "produtos": [
+        {
+          "produto_id": 12,
+          "nome": "Moeda Rara",
+          "quantidade": 1,
+          "preco_unitario": 280,
+          "subtotal": 280,
+          "desconto": 0
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "cliente_id": 11,
+      "data_venda": "2024-12-15",
+      "valor_total": "980",
+      "desconto": 20,
+      "forma_pagamento": "Cartão de Débito",
+      "endereco_entrega": "Rua Céu, 89, Fortaleza, CE",
+      "categoria": "Disco",
+      "produtos": [
+        {
+          "produto_id": 13,
+          "nome": "Vinil MPB",
+          "quantidade": 2,
+          "preco_unitario": 490,
+          "subtotal": 980,
+          "desconto": 20
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "cliente_id": 12,
+      "data_venda": "2024-10-28",
+      "valor_total": "560",
+      "desconto": 0,
+      "forma_pagamento": "Dinheiro",
+      "endereco_entrega": "Rua dos Livros, 1, Maceió, AL",
+      "categoria": "Livro",
+      "produtos": [
+        {
+          "produto_id": 14,
+          "nome": "Enciclopédia",
+          "quantidade": 2,
+          "preco_unitario": 280,
+          "subtotal": 560,
+          "desconto": 0
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "cliente_id": 13,
+      "data_venda": "2024-11-18",
+      "valor_total": "750",
+      "desconto": 5,
+      "forma_pagamento": "Pix",
+      "endereco_entrega": "Avenida dos Coqueiros, 111, Manaus, AM",
+      "categoria": "Roupas",
+      "produtos": [
+        {
+          "produto_id": 15,
+          "nome": "Calça Social",
+          "quantidade": 3,
+          "preco_unitario": 250,
+          "subtotal": 750,
+          "desconto": 5
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "cliente_id": 14,
+      "data_venda": "2024-10-30",
+      "valor_total": "300",
+      "desconto": 10,
+      "forma_pagamento": "Cartão de Crédito",
+      "endereco_entrega": "Rua das Palmeiras, 23, João Pessoa, PB",
+      "categoria": "Antiquário",
+      "produtos": [
+        {
+          "produto_id": 16,
+          "nome": "Estátua Grega",
+          "quantidade": 1,
+          "preco_unitario": 300,
+          "subtotal": 300,
+          "desconto": 10
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "cliente_id": 15,
+      "data_venda": "2024-12-10",
+      "valor_total": "960",
+      "desconto": 20,
+      "forma_pagamento": "Boleto Bancário",
+      "endereco_entrega": "Avenida das Marés, 70, Rio de Janeiro, RJ",
+      "categoria": "Disco",
+      "produtos": [
+        {
+          "produto_id": 17,
+          "nome": "Vinil Jazz",
+          "quantidade": 4,
+          "preco_unitario": 240,
+          "subtotal": 960,
+          "desconto": 20
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "cliente_id": 16,
+      "data_venda": "2024-11-25",
+      "valor_total": "420",
+      "desconto": 5,
+      "forma_pagamento": "Dinheiro",
+      "endereco_entrega": "Rua das Oliveiras, 180, Campo Grande, MS",
+      "categoria": "Livro",
+      "produtos": [
+        {
+          "produto_id": 18,
+          "nome": "História do Brasil",
+          "quantidade": 3,
+          "preco_unitario": 140,
+          "subtotal": 420,
+          "desconto": 5
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "cliente_id": 17,
+      "data_venda": "2024-12-20",
+      "valor_total": "1500",
+      "desconto": 50,
+      "forma_pagamento": "Transferência Bancária",
+      "endereco_entrega": "Rua das Pedras, 29, Belém, PA",
+      "categoria": "Roupas",
+      "produtos": [
+        {
+          "produto_id": 19,
+          "nome": "Blazer",
+          "quantidade": 3,
+          "preco_unitario": 500,
+          "subtotal": 1500,
+          "desconto": 50
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "cliente_id": 18,
+      "data_venda": "2024-10-22",
+      "valor_total": "300",
+      "desconto": 15,
+      "forma_pagamento": "Cartão de Débito",
+      "endereco_entrega": "Avenida Central, 200, São Luís, MA",
+      "categoria": "Antiquário",
+      "produtos": [
+        {
+          "produto_id": 20,
+          "nome": "Relógio de Parede Antigo",
+          "quantidade": 1,
+          "preco_unitario": 300,
+          "subtotal": 300,
+          "desconto": 15
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "cliente_id": 19,
+      "data_venda": "2024-11-15",
+      "valor_total": "600",
+      "desconto": 10,
+      "forma_pagamento": "Dinheiro",
+      "endereco_entrega": "Rua Flor de Lis, 90, Aracaju, SE",
+      "categoria": "Disco",
+      "produtos": [
+        {
+          "produto_id": 21,
+          "nome": "Vinil Sertanejo",
+          "quantidade": 2,
+          "preco_unitario": 300,
+          "subtotal": 600,
+          "desconto": 10
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "cliente_id": 20,
+      "data_venda": "2024-12-05",
+      "valor_total": "480",
+      "desconto": 0,
+      "forma_pagamento": "Pix",
+      "endereco_entrega": "Rua dos Girassóis, 15, Fortaleza, CE",
+      "categoria": "Livro",
+      "produtos": [
+        {
+          "produto_id": 22,
+          "nome": "Romance Histórico",
+          "quantidade": 6,
+          "preco_unitario": 80,
+          "subtotal": 480,
+          "desconto": 0
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "cliente_id": 21,
+      "data_venda": "2024-11-01",
+      "valor_total": "750",
+      "desconto": 25,
+      "forma_pagamento": "Cartão de Crédito",
+      "endereco_entrega": "Rua das Figueiras, 120, Goiânia, GO",
+      "categoria": "Roupas",
+      "produtos": [
+        {
+          "produto_id": 23,
+          "nome": "Camisa Social",
+          "quantidade": 5,
+          "preco_unitario": 150,
+          "subtotal": 750,
+          "desconto": 25
+        }
+      ]
+    },
+    {
+      "id": "22",
+      "cliente_id": 22,
+      "data_venda": "2024-12-18",
+      "valor_total": "250",
+      "desconto": 5,
+      "forma_pagamento": "Boleto Bancário",
+      "endereco_entrega": "Rua da Luz, 60, Cuiabá, MT",
+      "categoria": "Antiquário",
+      "produtos": [
+        {
+          "produto_id": 24,
+          "nome": "Candelabro",
+          "quantidade": 1,
+          "preco_unitario": 250,
+          "subtotal": 250,
+          "desconto": 5
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "cliente_id": "5",
       "data_venda": "2024-11-08",
-      "valor_total": "74",
-      "desconto": "58",
-      "forma_pagamento": "bfdb",
-      "endereco_entrega": "fdbdf"
+      "valor_total": "1500",
+      "desconto": "200",
+      "forma_pagamento": "Pix",
+      "endereco_entrega": "",
+      "categoria": "Roupas"
     },
     {
-      "id": 4,
-      "cliente_id": "782",
-      "data_venda": "2024-11-26",
-      "valor_total": "282",
-      "desconto": "282",
-      "forma_pagamento": "rtn",
-      "endereco_entrega": "nrtn"
-    },
-    {
-      "id": 5,
-      "cliente_id": "2",
-      "data_venda": "2024-11-05",
+      "id": 24,
+      "cliente_id": "5",
+      "data_venda": "2024-11-12",
       "valor_total": "1000",
       "desconto": "0",
       "forma_pagamento": "Pix",
-      "endereco_entrega": ""
-    },
-    {
-      "id": 6,
-      "cliente_id": "3",
-      "data_venda": "2024-11-06",
-      "valor_total": "1000",
-      "desconto": "0",
-      "forma_pagamento": "asdfasf",
-      "endereco_entrega": ""
-    },
-    {
-      "id": 7,
-      "cliente_id": "4",
-      "data_venda": "2024-11-06",
-      "valor_total": "1000",
-      "desconto": "",
-      "forma_pagamento": "Pix",
-      "endereco_entrega": ""
+      "endereco_entrega": "",
+      "categoria": "Antiquário"
     }
   ],
   "fornecedores": [
@@ -510,12 +926,44 @@
       "cnpj": "22.222.222/0001-44"
     },
     {
-      "id": 5,
-      "nome": "adf",
-      "email": "fsdf@fdaf",
-      "telefone": "7527",
-      "endereco": "vsdv",
-      "cnpj": "5785"
+      "id": "5",
+      "nome": "Fornecedor E",
+      "endereco": "Rua 5, 202, Curitiba, PR",
+      "telefone": "(41) 55555-5555",
+      "email": "fornecedorE@example.com",
+      "cnpj": "33.333.333/0001-55"
+    },
+    {
+      "id": "6",
+      "nome": "Fornecedor F",
+      "endereco": "Avenida 6, 303, Salvador, BA",
+      "telefone": "(71) 44444-4444",
+      "email": "fornecedorF@example.com",
+      "cnpj": "44.444.444/0001-66"
+    },
+    {
+      "id": "7",
+      "nome": "Fornecedor G",
+      "endereco": "Rua 7, 404, Florianópolis, SC",
+      "telefone": "(48) 33333-3333",
+      "email": "fornecedorG@example.com",
+      "cnpj": "55.555.555/0001-77"
+    },
+    {
+      "id": "8",
+      "nome": "Fornecedor H",
+      "endereco": "Avenida 8, 505, Recife, PE",
+      "telefone": "(81) 22222-2222",
+      "email": "fornecedorH@example.com",
+      "cnpj": "66.666.666/0001-88"
+    },
+    {
+      "id": "9",
+      "nome": "Fornecedor I",
+      "endereco": "Rua 9, 606, Manaus, AM",
+      "telefone": "(92) 11111-1111",
+      "email": "fornecedorI@example.com",
+      "cnpj": "77.777.777/0001-99"
     }
   ],
   "produtos": [
@@ -556,24 +1004,92 @@
       "tipo": "Discos"
     },
     {
-      "id": 5,
-      "nome": "vfv",
-      "preco": 174,
-      "quantidade_disponivel": 58,
-      "tamanho": "28",
-      "cor": "fyn",
-      "tipo": "fnf",
-      "descricao": "nfyn"
+      "id": "5",
+      "nome": "Blusa de Moletom",
+      "descricao": "Moletom unissex com capuz, confortável e estiloso.",
+      "preco": 59.99,
+      "quantidade_disponivel": 80,
+      "tamanho": "G",
+      "cor": "Cinza",
+      "tipo": "Roupas"
     },
     {
-      "id": 6,
-      "nome": "vsf",
-      "preco": 8,
-      "quantidade_disponivel": 58,
-      "tamanho": "2",
-      "cor": "ukg",
-      "tipo": "mugm",
-      "descricao": "mugm"
+      "id": "6",
+      "nome": "Saia Jeans",
+      "descricao": "Saia jeans feminina com detalhe desfiado na barra.",
+      "preco": 49.99,
+      "quantidade_disponivel": 60,
+      "tamanho": "M",
+      "cor": "Azul Claro",
+      "tipo": "Roupas"
+    },
+    {
+      "id": "7",
+      "nome": "Antiga Máquina de Escrever",
+      "descricao": "Máquina de escrever vintage, ideal para colecionadores.",
+      "preco": 500,
+      "quantidade_disponivel": 5,
+      "tipo": "Antiguidades"
+    },
+    {
+      "id": "8",
+      "nome": "Coleção de Selos Antigos",
+      "descricao": "Conjunto de selos raros de várias partes do mundo.",
+      "preco": 1200,
+      "quantidade_disponivel": 3,
+      "tipo": "Antiguidades"
+    },
+    {
+      "id": "9",
+      "nome": "Disco de Vinil - Beatles",
+      "descricao": "Edição clássica de um álbum dos Beatles.",
+      "preco": 200,
+      "quantidade_disponivel": 15,
+      "tipo": "Discos"
+    },
+    {
+      "id": "10",
+      "nome": "CD - Clássicos do Rock",
+      "descricao": "CD com uma coleção das melhores músicas de rock clássico.",
+      "preco": 50,
+      "quantidade_disponivel": 30,
+      "tipo": "Discos"
+    },
+    {
+      "id": "11",
+      "nome": "Livro - O Senhor dos Anéis",
+      "descricao": "Trilogia completa de O Senhor dos Anéis, capa dura.",
+      "preco": 120,
+      "quantidade_disponivel": 40,
+      "tipo": "Livros"
+    },
+    {
+      "id": "12",
+      "nome": "Livro - Coleção Sherlock Holmes",
+      "descricao": "Box com todos os livros de Sherlock Holmes.",
+      "preco": 150,
+      "quantidade_disponivel": 20,
+      "tipo": "Livros"
+    },
+    {
+      "id": "13",
+      "nome": "Camiseta de Futebol",
+      "descricao": "Camiseta oficial do time de futebol.",
+      "preco": 89.99,
+      "quantidade_disponivel": 70,
+      "tamanho": "G",
+      "cor": "Vermelho",
+      "tipo": "Roupas"
+    },
+    {
+      "id": "14",
+      "nome": "Jaqueta de Couro",
+      "descricao": "Jaqueta de couro sintético, estilosa e resistente.",
+      "preco": 199.99,
+      "quantidade_disponivel": 20,
+      "tamanho": "M",
+      "cor": "Preto",
+      "tipo": "Roupas"
     }
   ],
   "users": [

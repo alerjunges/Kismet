@@ -66,6 +66,18 @@
                 class="input-field"
               />
             </div>
+
+            <div class="row">
+              <q-select
+                filled
+                v-model="categoria"
+                label="Categoria"
+                :options="categoriaOptions"
+                outlined
+                required
+                class="input-field"
+              />
+            </div>
           </div>
 
           <div class="button-row">
@@ -80,7 +92,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useCompraStore } from 'src/stores/compraStore'; // Usando a store de compra
+import { useCompraStore } from 'src/stores/compraStore'; 
 
 const router = useRouter();
 const compraStore = useCompraStore();
@@ -91,6 +103,14 @@ const valor_total = ref('');
 const desconto = ref('');
 const forma_pagamento = ref('');
 const endereco_entrega = ref('');
+const categoria = ref('');
+
+const categoriaOptions = [
+  { label: 'Roupas', value: 'Roupas' },
+  { label: 'Antiquário', value: 'Antiquário' },
+  { label: 'Disco', value: 'Disco' },
+  { label: 'Livro', value: 'Livro' }
+];
 
 function voltar() {
   router.back(); 
@@ -105,18 +125,18 @@ async function adicionarCompra() {
       desconto: desconto.value,
       forma_pagamento: forma_pagamento.value,
       endereco_entrega: endereco_entrega.value,
+      categoria: typeof categoria.value === 'object' ? categoria.value.label : categoria.value
     };
 
-    // Usando a store para adicionar a compra
     await compraStore.addCompra(novaCompra);
     
-    // Limpa os campos após o sucesso
     fornecedor_id.value = '';
     data_compra.value = '';
     valor_total.value = '';
     desconto.value = '';
     forma_pagamento.value = '';
     endereco_entrega.value = '';
+    categoria.value = '';
 
     alert('Compra cadastrada com sucesso!');
   } catch (error) {

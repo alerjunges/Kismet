@@ -6,7 +6,7 @@
 import { onMounted, watch, ref } from 'vue';
 import { Chart, registerables, LinearScale } from 'chart.js';
 
-// Registrando explicitamente a escala linear
+
 Chart.register(...registerables, LinearScale);
 
 const props = defineProps(['data']);
@@ -15,7 +15,7 @@ let chartInstance = null;
 
 function renderChart() {
   if (chartInstance) {
-    chartInstance.destroy(); // Destrói o gráfico existente antes de criar um novo
+    chartInstance.destroy(); 
   }
 
   const ctx = barChart.value.getContext('2d');
@@ -34,7 +34,7 @@ function renderChart() {
       maintainAspectRatio: false,
       scales: {
         y: {
-          type: 'linear', // Define explicitamente o tipo de escala
+          type: 'linear', 
           beginAtZero: true
         }
       }
@@ -44,7 +44,6 @@ function renderChart() {
 
 onMounted(renderChart);
 
-// Observa mudanças nos dados e atualiza o gráfico
 watch(() => props.data, renderChart);
 </script>
 

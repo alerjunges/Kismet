@@ -84,57 +84,57 @@ const compraStore = useCompraStore();
 
 // Dados de entrada para o seletor de mês
 const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-const mesSelecionado = ref('Novembro'); // Seleciona o mês de análise
+const mesSelecionado = ref('Novembro'); 
 
-// Fetch inicial dos dados
 onMounted(() => {
   vendaStore.fetchVendasData();
   compraStore.fetchComprasData();
 });
 
-// Computed para filtrar as vendas e compras de acordo com o mês selecionado
 const vendasFiltradas = computed(() => {
-  const mesIndex = meses.indexOf(mesSelecionado.value) + 1; // Obtém o número do mês
+  const mesIndex = meses.indexOf(mesSelecionado.value) + 1; 
   return vendaStore.vendas.filter(venda => new Date(venda.data_venda).getMonth() + 1 === mesIndex);
 });
 
 const comprasFiltradas = computed(() => {
-  const mesIndex = meses.indexOf(mesSelecionado.value) + 1; // Obtém o número do mês
+  const mesIndex = meses.indexOf(mesSelecionado.value) + 1; 
   return compraStore.compras.filter(compra => new Date(compra.data_compra).getMonth() + 1 === mesIndex);
 });
 
-// Computed para total de entrada (vendas), saída (compras) e saldo para o mês selecionado
 const totalEntrada = computed(() => vendasFiltradas.value.reduce((total, venda) => total + parseFloat(venda.valor_total || 0), 0));
 const totalSaida = computed(() => comprasFiltradas.value.reduce((total, compra) => total + parseFloat(compra.valor_total || 0), 0));
 const saldo = computed(() => totalEntrada.value - totalSaida.value);
 
-// Atualiza os dados ao selecionar um novo mês
 function atualizarDadosPorMes() {
   vendaStore.fetchVendasData();
   compraStore.fetchComprasData();
 }
 
-// Dados para o gráfico de pizza de vendas por categoria
 const vendasPorCategoria = computed(() => {
   const categorias = {};
+  let totalVendas = 0;
+
   vendasFiltradas.value.forEach(venda => {
-    venda.produtos?.forEach(produto => {
-      if (!categorias[produto.nome]) {
-        categorias[produto.nome] = 0;
-      }
-      categorias[produto.nome] += produto.subtotal;
-    });
+    const categoria = venda.categoria || "Outros"; 
+    if (!categorias[categoria]) {
+      categorias[categoria] = 0;
+    }
+    categorias[categoria] += parseFloat(venda.valor_total || 0);
+    totalVendas += parseFloat(venda.valor_total || 0);
   });
+
+  const labels = Object.keys(categorias);
+  const data = labels.map(categoria => ((categorias[categoria] / totalVendas) * 100).toFixed(2));
+
   return {
-    labels: Object.keys(categorias),
+    labels,
     datasets: [{
-      data: Object.values(categorias),
+      data,
       backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
     }]
   };
 });
 
-// Função para verificar se uma data é hoje
 function isToday(date) {
   const today = new Date();
   return date.getDate() === today.getDate() &&
@@ -142,7 +142,6 @@ function isToday(date) {
          date.getFullYear() === today.getFullYear();
 }
 
-// Computed para calcular transações diárias
 const transacoesDiarias = computed(() => {
   const totalVendasDia = vendasFiltradas.value
     .filter(venda => isToday(new Date(venda.data_venda)))
@@ -155,7 +154,6 @@ const transacoesDiarias = computed(() => {
   return [totalVendasDia, totalComprasDia];
 });
 
-// Função de formatação de moeda
 function formatarMoeda(valor) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
 }

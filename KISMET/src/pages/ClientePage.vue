@@ -107,10 +107,10 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { useClienteStore } from 'src/stores/clienteStore'; // Usando a store
+import { useClienteStore } from 'src/stores/clienteStore'; 
 
 const router = useRouter();
-const clienteStore = useClienteStore(); // Instância da store
+const clienteStore = useClienteStore(); 
 const search = ref('');
 const editingCliente = ref(null);
 
@@ -126,12 +126,10 @@ const columns = [
   { name: 'status', label: 'Status', align: 'left', field: 'status' }
 ];
 
-// Computed properties para acessar dados reativos da store
 const loading = computed(() => clienteStore.loading);
 const error = computed(() => clienteStore.error);
 const clientes = computed(() => clienteStore.clientes);
 
-// Busca e filtra clientes
 onMounted(async () => {
   await clienteStore.fetchClientesData();
 });
@@ -152,7 +150,7 @@ function toggleEdit(cliente) {
 
 async function salvarEdicao(clienteId) {
   try {
-    await clienteStore.updateCliente(clienteId, editingCliente.value); // Usando a store para atualizar
+    await clienteStore.updateCliente(clienteId, editingCliente.value); 
     editingCliente.value = null;
   } catch (err) {
     console.error('Erro ao atualizar cliente:', err);
@@ -165,7 +163,7 @@ function adicionarCliente() {
 
 async function deletarCliente(clienteId) {
   try {
-    await clienteStore.deleteCliente(clienteId); // Usando a store para deletar
+    await clienteStore.deleteCliente(clienteId); 
   } catch (err) {
     console.error("Erro ao deletar cliente:", err);
   }

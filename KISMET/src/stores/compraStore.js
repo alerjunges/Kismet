@@ -26,7 +26,7 @@ export const useCompraStore = defineStore("compraStore", {
       this.error = null;
       try {
         const compraAdicionada = await compraService.addCompra(novaCompra);
-        this.compras.push(compraAdicionada); // Adiciona a compra à lista local
+        this.compras.push(compraAdicionada); 
       } catch (error) {
         this.error = "Erro ao adicionar compra";
       } finally {
@@ -34,15 +34,14 @@ export const useCompraStore = defineStore("compraStore", {
       }
     },
 
-    // Ação para atualizar uma compra existente
     async updateCompra(compraId, compraAtualizada) {
       this.loading = true;
       this.error = null;
       try {
-        const compra = await compraService.updateCompra(compraId, compraAtualizada); // Atualiza compra via serviço
-        const index = this.compras.findIndex((c) => c.id === compraId); // Encontra o índice da compra na lista
+        const compra = await compraService.updateCompra(compraId, compraAtualizada); 
+        const index = this.compras.findIndex((c) => c.id === compraId); 
         if (index !== -1) {
-          this.compras.splice(index, 1, compra); // Substitui a compra atualizada na lista local
+          this.compras.splice(index, 1, compra); 
         }
       } catch (err) {
         this.error = "Erro ao atualizar compra";
@@ -51,13 +50,12 @@ export const useCompraStore = defineStore("compraStore", {
       }
     },
 
-    // Ação para deletar uma compra
     async deleteCompra(compraId) {
       this.loading = true;
       this.error = null;
       try {
-        await compraService.deleteCompra(compraId); // Deleta compra via serviço
-        this.compras = this.compras.filter((c) => c.id !== compraId); // Remove a compra da lista local
+        await compraService.deleteCompra(compraId); 
+        this.compras = this.compras.filter((c) => c.id !== compraId); 
       } catch (err) {
         this.error = "Erro ao deletar compra";
       } finally {

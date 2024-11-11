@@ -100,7 +100,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { usePagamentoStore } from 'src/stores/pagamentoStore'; // Chame a store de pagamentos
+import { usePagamentoStore } from 'src/stores/pagamentoStore'; 
 
 const router = useRouter();
 const pagamentoStore = usePagamentoStore();
@@ -115,7 +115,7 @@ const status = ref('');
 const parcela = ref('');
 
 function voltar() {
-  router.back(); // Voltar à página anterior
+  router.back(); 
 }
 
 async function adicionarPagamento() {
@@ -131,7 +131,7 @@ async function adicionarPagamento() {
       parcela: parcela.value,
     };
 
-    await pagamentoStore.addPagamento(novoPagamento); // Chama a store para adicionar o pagamento
+    await pagamentoStore.addPagamento(novoPagamento); 
 
     cliente_id.value = '';
     data_pagamento.value = '';
@@ -143,7 +143,7 @@ async function adicionarPagamento() {
     parcela.value = '';
 
     alert('Pagamento cadastrado com sucesso!');
-    router.push('/pagamento'); // Redireciona para a lista de pagamentos
+    router.push('/pagamento'); 
 
   } catch (error) {
     console.error('Erro ao adicionar pagamento:', error);

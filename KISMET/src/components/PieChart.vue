@@ -28,7 +28,6 @@ function renderChart() {
 
   const { labels, datasets } = props.data;
 
-  // Verifique se labels e datasets são válidos antes de renderizar
   if (Array.isArray(labels) && Array.isArray(datasets) && datasets.length > 0) {
     const ctx = pieChart.value.getContext('2d');
     chartInstance = new Chart(ctx, {
@@ -58,7 +57,6 @@ function renderChart() {
 
 onMounted(renderChart);
 
-// Atualiza o gráfico se os dados mudarem
 watch(() => props.data, renderChart);
 </script>
 

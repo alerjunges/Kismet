@@ -1,21 +1,19 @@
 import { api } from "src/boot/axios";
 
 export default {
-  // Função para obter os dados das vendas
+
   async getVendasData() {
     try {
       const response = await api.get("/vendas");
-      return response.data; // Retorna a lista de vendas
+      return response.data; 
     } catch (error) {
       console.error("Erro ao carregar dados de vendas:", error);
       throw error;
     }
   },
 
-  // Função para adicionar uma nova venda com o próximo ID
   async addVenda(novaVenda) {
     try {
-      // Buscar todas as vendas existentes
       const vendas = await this.getVendasData();
       console.log(vendas);
 
@@ -35,7 +33,6 @@ export default {
     }
   },
 
-  // Função para atualizar uma venda
   async updateVenda(vendaId, vendaAtualizada) {
     try {
       const response = await api.put(`/vendas/${vendaId}`, vendaAtualizada);
@@ -47,7 +44,6 @@ export default {
     }
   },
 
-  // Função para deletar uma venda
   async deleteVenda(vendaId) {
     try {
       await api.delete(`/vendas/${vendaId}`);

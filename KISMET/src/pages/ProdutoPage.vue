@@ -42,65 +42,55 @@
 
             <template v-slot:body="props">
               <q-tr :props="props" class="body-row">
-                <!-- Ícones de ação com tamanho maior -->
                 <q-td class="vertical-line body-cell">
                   <q-icon name="edit" class="q-mr-sm action-icon" @click="toggleEdit(props.row)" />
                   <q-icon name="delete" class="q-mr-sm action-icon" @click="deletarProduto(props.row.id)" />
                 </q-td>
 
-                <!-- Produto ID (não editável) -->
                 <q-td class="vertical-line body-cell">{{ props.row.id }}</q-td>
 
-                <!-- Nome (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingProduto && editingProduto.id === props.row.id"
                            v-model="editingProduto.nome" dense />
                   <span v-else>{{ props.row.nome }}</span>
                 </q-td>
 
-                <!-- Descrição (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingProduto && editingProduto.id === props.row.id"
                            v-model="editingProduto.descricao" dense />
                   <span v-else>{{ props.row.descricao }}</span>
                 </q-td>
 
-                <!-- Preço (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingProduto && editingProduto.id === props.row.id"
                            v-model="editingProduto.preco" dense />
                   <span v-else>{{ formatarMoeda(props.row.preco) }}</span>
                 </q-td>
 
-                <!-- Quantidade Disponível (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingProduto && editingProduto.id === props.row.id"
                            v-model="editingProduto.quantidade_disponivel" dense />
                   <span v-else>{{ props.row.quantidade_disponivel }}</span>
                 </q-td>
 
-                <!-- Tamanho (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingProduto && editingProduto.id === props.row.id"
                            v-model="editingProduto.tamanho" dense />
                   <span v-else>{{ props.row.tamanho }}</span>
                 </q-td>
 
-                <!-- Cor (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingProduto && editingProduto.id === props.row.id"
                            v-model="editingProduto.cor" dense />
                   <span v-else>{{ props.row.cor }}</span>
                 </q-td>
 
-                <!-- Tipo (editável) -->
                 <q-td class="vertical-line body-cell">
                   <q-input v-if="editingProduto && editingProduto.id === props.row.id"
                            v-model="editingProduto.tipo" dense />
                   <span v-else>{{ props.row.tipo }}</span>
                 </q-td>
 
-                <!-- Botão para salvar as edições -->
                 <q-td v-if="editingProduto && editingProduto.id === props.row.id">
                   <q-btn label="Salvar" @click="salvarEdicao(props.row.id)" color="green" />
                 </q-td>
@@ -108,7 +98,6 @@
             </template>
           </q-table>
 
-          <!-- Caso não haja produtos disponíveis -->
           <div v-else-if="produtosFiltrados && produtosFiltrados.length === 0">Nenhum produto disponível.</div>
 
         </q-page>
@@ -184,41 +173,36 @@ async function deletarProduto(produtoId) {
 </script>
 
 <style scoped>
-/* Cabeçalho */
+
 .header-row {
   background-color: #04442C;
   color: white;
   font-weight: bold;
 }
 
-/* Customização da célula */
 .body-cell {
   padding: 12px;
   border-bottom: 1px solid #ddd;
 }
 
-/* Linha da tabela */
 .body-row {
   border-bottom: 1px solid #ddd;
 }
 
-/* Adicionando linha vertical entre colunas */
 .vertical-line {
   border-right: 1px solid #ddd;
 }
 
-/* Estilizando os ícones de ação */
 .action-icon {
-  font-size: 20px; /* Aumenta o tamanho dos ícones */
+  font-size: 20px; 
   cursor: pointer;
   color: #04442C;
 }
 
 .action-icon:hover {
-  color: #e74c3c; /* Cor ao passar o mouse */
+  color: #e74c3c; 
 }
 
-/* Estilo da linha do botão */
 .row {
   display: flex;
   align-items: center;
@@ -226,7 +210,6 @@ async function deletarProduto(produtoId) {
   margin-bottom: 20px;
 }
 
-/* Botão de adicionar produto */
 .custom-button {
   width: 250px;
   height: 53px;
@@ -235,7 +218,6 @@ async function deletarProduto(produtoId) {
   color: white !important;
 }
 
-/* Campo de busca */
 .custom-input {
   width: 250px;
   height: 37px;
@@ -243,14 +225,12 @@ async function deletarProduto(produtoId) {
   color: white !important;
 }
 
-/* Estilo do contador de produtos */
 .result-count {
   margin-left: auto;
   font-size: 16px;
   font-weight: bold;
 }
 
-/* Estilo da tabela */
 .custom-table {
   width: 100%;
   text-align: left;

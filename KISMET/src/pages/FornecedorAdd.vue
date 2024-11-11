@@ -94,10 +94,8 @@ async function adicionarFornecedor() {
       cnpj: cnpj.value,
     };
 
-    // Adiciona o fornecedor usando a store
     await fornecedorStore.addFornecedor(novoFornecedor);
 
-    // Limpa os campos após o sucesso
     nome.value = '';
     email.value = '';
     telefone.value = '';
@@ -105,7 +103,7 @@ async function adicionarFornecedor() {
     cnpj.value = '';
 
     alert('Fornecedor cadastrado com sucesso!');
-    router.push('/fornecedor'); // Redireciona para a lista de fornecedores
+    router.push('/fornecedor'); 
 
   } catch (error) {
     console.error('Erro ao adicionar fornecedor:', error);

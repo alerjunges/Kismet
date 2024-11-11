@@ -88,10 +88,10 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useClienteStore } from "src/stores/clienteStore"; // Importando a store
+import { useClienteStore } from "src/stores/clienteStore"; 
 
 const router = useRouter();
-const clienteStore = useClienteStore(); // Instância da store
+const clienteStore = useClienteStore(); 
 
 const nome = ref("");
 const email = ref("");
@@ -115,7 +115,7 @@ async function submitForm() {
       status: status.value,
     };
     
-    await clienteStore.addCliente(novoCliente); // Usando a store para adicionar o cliente
+    await clienteStore.addCliente(novoCliente); 
 
     nome.value = "";
     email.value = "";

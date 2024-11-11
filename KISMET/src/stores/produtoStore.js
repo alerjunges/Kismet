@@ -26,7 +26,7 @@ export const useProdutoStore = defineStore("produtoStore", {
       this.error = null;
       try {
         const produtoAdicionado = await produtoService.addProduto(novoProduto);
-        this.produtos.push(produtoAdicionado); // Adiciona o produto à lista local
+        this.produtos.push(produtoAdicionado); 
       } catch (error) {
         this.error = "Erro ao adicionar produto";
       } finally {
@@ -34,15 +34,14 @@ export const useProdutoStore = defineStore("produtoStore", {
       }
     },
 
-    // Ação para atualizar um produto existente
     async updateProduto(produtoId, produtoAtualizado) {
       this.loading = true;
       this.error = null;
       try {
-        const produto = await produtoService.updateProduto(produtoId, produtoAtualizado); // Atualiza produto via serviço
-        const index = this.produtos.findIndex((p) => p.id === produtoId); // Encontra o índice do produto na lista
+        const produto = await produtoService.updateProduto(produtoId, produtoAtualizado); 
+        const index = this.produtos.findIndex((p) => p.id === produtoId); 
         if (index !== -1) {
-          this.produtos.splice(index, 1, produto); // Substitui o produto atualizado na lista local
+          this.produtos.splice(index, 1, produto); 
         }
       } catch (err) {
         this.error = "Erro ao atualizar produto";
@@ -51,13 +50,12 @@ export const useProdutoStore = defineStore("produtoStore", {
       }
     },
 
-    // Ação para deletar um produto
     async deleteProduto(produtoId) {
       this.loading = true;
       this.error = null;
       try {
-        await produtoService.deleteProduto(produtoId); // Deleta produto via serviço
-        this.produtos = this.produtos.filter((p) => p.id !== produtoId); // Remove o produto da lista local
+        await produtoService.deleteProduto(produtoId); 
+        this.produtos = this.produtos.filter((p) => p.id !== produtoId); 
       } catch (err) {
         this.error = "Erro ao deletar produto";
       } finally {
